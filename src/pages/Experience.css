@@ -16,31 +16,33 @@
 .experience-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 4rem;
+  gap: 3rem;
 }
 
 .internship-section h2, .certifications-section h2 {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-bottom: 2rem;
-  font-size: 1.75rem;
-}
-
-.section-icon {
-  color: var(--accent-color);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .experience-timeline {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
+  grid-template-columns: 1fr; /* Single column on mobile by default */
+  gap: 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
+@media screen and (min-width: 769px) {
+  .experience-timeline {
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  }
+}
+
 .experience-card {
-  padding: 2rem;
+  padding: 1.5rem;
   border-left: 4px solid var(--accent-color);
 }
 
@@ -50,17 +52,17 @@
   align-items: flex-start;
   margin-bottom: 1rem;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .role-title {
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   color: var(--text-primary);
   margin-bottom: 0.25rem;
 }
 
 .company-name {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--text-secondary);
   font-weight: 500;
 }
@@ -68,28 +70,30 @@
 .date-badge {
   background-color: rgba(59, 130, 246, 0.1);
   color: var(--accent-color);
-  padding: 0.4rem 1rem;
+  padding: 0.3rem 0.8rem;
   border-radius: 20px;
   font-weight: 500;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   border: 1px solid rgba(59, 130, 246, 0.2);
+  white-space: nowrap;
 }
 
 .experience-details {
   list-style-type: disc;
-  padding-left: 1.5rem;
+  padding-left: 1.25rem;
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: 1.5;
+  font-size: 0.95rem;
 }
 
 .experience-details li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
 .certifications-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
 }
 
 .certification-item {
@@ -110,6 +114,7 @@
   height: 150px;
   overflow: hidden;
   border-bottom: 1px solid var(--border-color);
+  transition: height 0.3s ease;
 }
 
 .cert-image {
@@ -124,7 +129,7 @@
 }
 
 .cert-info {
-  padding: 1.5rem;
+  padding: 1.25rem;
 }
 
 .cert-info h3 {
@@ -134,13 +139,38 @@
 
 .cert-info p {
   color: var(--text-secondary);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   margin: 0;
 }
 
-@media screen and (max-width: 768px) {
+.section-icon {
+  color: var(--accent-color);
+}
+
+@media screen and (max-width: 480px) {
+  .experience-header {
+    margin-bottom: 2.5rem;
+  }
+
   .experience-card-header {
     flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .date-badge {
+    align-self: flex-start;
+  }
+
+  .certifications-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .cert-img-wrapper {
+    height: 180px;
+  }
+  
+  .cert-info {
+    padding: 1rem;
   }
 }
 
