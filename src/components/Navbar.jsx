@@ -13,13 +13,15 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-container">
         <NavLink to="/" className="navbar-logo" onClick={closeMenu}>
-          <img 
-            src="/profile.jpg" 
-            alt="Logo" 
-            className="nav-logo-img" 
-            onError={(e) => { e.target.src = 'https://via.placeholder.com/40?text=JP'; }}
-          />
-          <span>Portfolio.</span>
+          <div className="nav-logo-wrapper">
+            <img 
+              src="/my_profile.png" 
+              alt="Logo" 
+              className="nav-logo-img" 
+              onError={(e) => { e.target.src = 'https://via.placeholder.com/80?text=PR'; }}
+            />
+          </div>
+          <span className="logo-text">Prudhvi <span className="text-gradient">Raju.</span></span>
         </NavLink>
         
         <div className="menu-icon" onClick={toggleMenu}>

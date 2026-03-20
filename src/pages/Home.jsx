@@ -33,10 +33,10 @@ const Home = () => {
       <div className="hero-section">
         <div className="profile-image-container">
           <img
-            src="/profile.jpg"
+            src="/my_profile.png"
             alt="Profile"
             className="profile-image"
-            onError={(e) => { e.target.src = 'https://via.placeholder.com/250?text=Upload+profile.jpg'; }}
+            onError={(e) => { e.target.src = 'https://via.placeholder.com/250?text=Upload+my_profile.png'; }}
           />
         </div>
 
