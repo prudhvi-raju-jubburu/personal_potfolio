@@ -1,5 +1,8 @@
 import './About.css';
-import { BookOpen, Monitor, Award, Lightbulb, GraduationCap } from 'lucide-react';
+import { 
+  Briefcase, GraduationCap, Users, Heart, Target, 
+  Layout, Terminal, Database, Cpu 
+} from 'lucide-react';
 
 const About = () => {
   return (
@@ -9,61 +12,128 @@ const About = () => {
         <div className="title-underline"></div>
       </div>
 
-      <section className="about-intro">
-        <p>
-          I am a B.Tech Computer Science student with a strong interest in Web Development and Software Engineering. 
-          I enjoy building real-world applications that solve practical problems and improve user experience.
-        </p>
-        <p>
-          I have hands-on experience with Javascript,React.js,Node.js Express.js and Python, and have developed multiple projects. 
-          My internship experience helped me understand real-world workflows and teamwork. 
-          I am always eager to learn new technologies and build efficient, scalable applications.
-        </p>
-      </section>
-
-      <div className="about-grid">
-        <section className="skills-section">
-          <h2><BookOpen className="section-icon" /> Skills & Languages</h2>
-          <div className="skills-container">
-            <div className="skill-category card">
-              <div className="category-header">
-                <Monitor className="category-icon" />
-                <h3>Technical Skills</h3>
+      <div className="about-content">
+        <section className="about-main card">
+          <div className="professional-summary">
+            <h2>Professional Summary</h2>
+            <p>
+              I am a dedicated <strong>B.Tech Computer Science student</strong> at GMR Institute of Technology with a passion for building 
+              impactful digital solutions. As a <strong>MERN Stack Developer</strong>, I specialize in creating 
+              scalable, user-centric web applications using modern technologies like <strong>React, Node.js, and MongoDB</strong>.
+            </p>
+            <p>
+              My journey is fueled by a strong foundation in <strong>JavaScript and Python</strong>, combined with hands-on project 
+              experience in full-stack development and machine learning. Beyond technical skills, I am an active 
+              <strong> NSS Volunteer</strong>, which has shaped my leadership and teamwork abilities through community service.
+            </p>
+          </div>
+          
+          <div className="about-highlights">
+            <div className="highlight-item">
+              <Users className="highlight-icon" />
+              <div>
+                <h4>Teamwork & Leadership</h4>
+                <p>NSS experience in leading group activities and community outreach.</p>
               </div>
-              <ul className="skill-list">
+            </div>
+            <div className="highlight-item">
+              <Target className="highlight-icon" />
+              <div>
+                <h4>Problem-Solver</h4>
+                <p>Passionate about algorithmic challenges and system design.</p>
+              </div>
+            </div>
+            <div className="highlight-item">
+              <Heart className="highlight-icon" />
+              <div>
+                <h4>Continuous Learner</h4>
+                <p>Eager to adopt new frameworks and industry best practices.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="skills-overview card">
+          <h2 className="sub-title"><Layout size={24} /> Skills</h2>
+          <div className="skills-grid extended">
+            <div className="skill-card">
+              <div className="skill-header">
+                <Layout className="skill-icon frontend" />
+                <h3>Frontend</h3>
+              </div>
+              <ul className="skill-tags">
+                <li><span className="skill-tag">HTML5</span></li>
+                <li><span className="skill-tag">CSS3</span></li>
+                <li><span className="skill-tag">React.js</span></li>
+              </ul>
+            </div>
+            
+            <div className="skill-card">
+              <div className="skill-header">
+                <Cpu className="skill-icon languages" />
+                <h3>Programming</h3>
+              </div>
+              <ul className="skill-tags">
                 <li><span className="skill-tag">C</span></li>
                 <li><span className="skill-tag">C++</span></li>
-                <li><span className="skill-tag">HTML</span></li>
-                <li><span className="skill-tag">CSS</span></li>
-                <li><span className="skill-tag">JavaScript</span></li>
-                <li><span className="skill-tag">React.js</span></li>
-                <li><span className="skill-tag">Node.js</span></li>
-                <li><span className="skill-tag">Express.js</span></li>
-                <li><span className="skill-tag">MongoDB</span></li>
                 <li><span className="skill-tag">Python</span></li>
-                <li><span className="skill-tag">Flask</span></li>
+                <li><span className="skill-tag">JavaScript</span></li>
               </ul>
             </div>
 
-            <div className="skill-category card">
-              <div className="category-header">
-                <Lightbulb className="category-icon" />
+            <div className="skill-card">
+              <div className="skill-header">
+                <Terminal className="skill-icon backend" />
+                <h3>Backend</h3>
+              </div>
+              <ul className="skill-tags">
+                <li><span className="skill-tag">Node.js</span></li>
+                <li><span className="skill-tag">Express.js</span></li>
+              </ul>
+            </div>
+
+            <div className="skill-card">
+              <div className="skill-header">
+                <Database className="skill-icon database" />
+                <h3>Database</h3>
+              </div>
+              <ul className="skill-tags">
+                <li><span className="skill-tag">MongoDB</span></li>
+                <li><span className="skill-tag">SQL (MySQL)</span></li>
+              </ul>
+            </div>
+
+            <div className="skill-card">
+              <div className="skill-header">
+                <Briefcase className="skill-icon tools" />
+                <h3>Tools</h3>
+              </div>
+              <ul className="skill-tags">
+                <li><span className="skill-tag">Git</span></li>
+                <li><span className="skill-tag">GitHub</span></li>
+                <li><span className="skill-tag">VS Code</span></li>
+              </ul>
+            </div>
+
+            <div className="skill-card">
+              <div className="skill-header">
+                <Heart className="skill-icon soft-skills" />
                 <h3>Soft Skills</h3>
               </div>
-              <ul className="skill-list">
+              <ul className="skill-tags">
                 <li><span className="skill-tag">Teamwork</span></li>
                 <li><span className="skill-tag">Adaptability</span></li>
                 <li><span className="skill-tag">Problem Solving</span></li>
-                <li><span className="skill-tag">Time Management</span></li>
+                <li><span className="skill-tag">Leadership</span></li>
               </ul>
             </div>
 
-            <div className="skill-category card">
-              <div className="category-header">
-                <Award className="category-icon" />
-                <h3>Languages Known</h3>
+            <div className="skill-card">
+              <div className="skill-header">
+                <Users className="skill-icon languages-known" />
+                <h3>Languages</h3>
               </div>
-              <ul className="skill-list">
+              <ul className="skill-tags">
                 <li><span className="skill-tag">English</span></li>
                 <li><span className="skill-tag">Telugu</span></li>
               </ul>
@@ -71,35 +141,61 @@ const About = () => {
           </div>
         </section>
 
-        <section className="education-section">
-          <h2><GraduationCap className="section-icon" /> Education</h2>
-          <div className="timeline">
-            <div className="timeline-item">
-              <div className="timeline-dot"></div>
-              <div className="timeline-content card">
-                <h3>B.Tech — CSE</h3>
-                <h4 className="institution">GMR Institute of Technology, Rajam</h4>
-                <p className="timeline-date">2023 - 2027</p>
-                <div className="grade-badge">CGPA: 9.0</div>
+        <section className="about-details">
+          <div className="education-column">
+            <h2 className="sub-title"><GraduationCap size={24} /> Education Journey</h2>
+            <div className="timeline-v2">
+              <div className="timeline-box card">
+                <span className="timeline-date">2023 - 2027</span>
+                <h3>B.Tech (CSE)</h3>
+                <p className="institution">GMR Institute of Technology, Rajam</p>
+                <div className="grade-pill">CGPA: 9.0</div>
               </div>
-            </div>
-            <div className="timeline-item">
-              <div className="timeline-dot"></div>
-              <div className="timeline-content card">
-                <h3>Intermediate — MPC</h3>
-                <h4 className="institution">Vidya Vikas Junior College, Eluru</h4>
-                <p className="timeline-date">2021 - 2023</p>
-                <div className="grade-badge">GPA: 9.6</div>
+              <div className="timeline-box card">
+                <span className="timeline-date">2021 - 2023</span>
+                <h3>Intermediate (MPC)</h3>
+                <p className="institution">Vidya Vikas Junior College, Eluru</p>
+                <div className="grade-pill">GPA: 9.6</div>
               </div>
-            </div>
-            <div className="timeline-item">
-              <div className="timeline-dot"></div>
-              <div className="timeline-content card">
+              <div className="timeline-box card">
+                <span className="timeline-date">2021</span>
                 <h3>Secondary Education</h3>
-                <h4 className="institution">ZPP High School, Raghavapuram</h4>
-                <p className="timeline-date">Graduated: 2021</p>
-                <div className="grade-badge">GPA: 9.7</div>
+                <p className="institution">ZPP High School, Raghavapuram</p>
+                <div className="grade-pill">GPA: 9.7</div>
               </div>
+            </div>
+          </div>
+
+          <div className="internship-column">
+            <h2 className="sub-title"><Briefcase size={24} /> Experience Highlights</h2>
+            <div className="experience-summary card">
+              <div className="exp-item">
+                <div className="exp-dot"></div>
+                <div>
+                  <h4>MERN Stack Intern</h4>
+                  <p className="exp-info">Codec Technologies Pvt. Ltd. (Oct 2025)</p>
+                  <ul className="exp-bullets">
+                    <li>Built responsive UI components using React.js and managed state effectively.</li>
+                    <li>Developed RESTful APIs with Node.js and Express for data handling.</li>
+                    <li>Integrated MongoDB for scalable and efficient database management.</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="exp-item">
+                <div className="exp-dot"></div>
+                <div>
+                  <h4>AI Technologies Intern</h4>
+                  <p className="exp-info">EdyGrad One Pvt. Ltd. (June 2025)</p>
+                  <ul className="exp-bullets">
+                    <li>Explored core Artificial Intelligence and Machine Learning concepts.</li>
+                    <li>Gained experience in data preprocessing and model evaluation metrics.</li>
+                    <li>Studied neural network architectures and their real-world applications.</li>
+                  </ul>
+                </div>
+              </div>
+              <p className="exp-note">
+                Gained solid exposure to full-stack workflows, component design, and AI/ML model integration.
+              </p>
             </div>
           </div>
         </section>

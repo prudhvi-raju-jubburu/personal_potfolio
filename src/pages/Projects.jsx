@@ -5,50 +5,49 @@ const Projects = () => {
   const projectsData = [
     {
       id: 1,
-      title: 'NSS GMRIT Website (2024)',
-      description: 'Developed a web-based portal for NSS volunteer attendance and unit activity management.',
-      techStack: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
-      githubLink: 'https://github.com/prudhvi-raju-jubburu/NSS---GMRIT',
-      // liveLink: 'https://placeholder.com/nss-live',
-      image: '/projects/nss.png'
+      title: 'Geo-Enabled Tourism System (MERN)',
+      description: 'A full-stack tourism platform for Andhra Pradesh with interactive maps, place details, and real-time navigation integration.',
+      techStack: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Maps API'],
+      githubLink: 'https://github.com/prudhvi-raju-jubburu',
+      liveLink: '#',
+      image: '/projects/visitap.png'
     },
     {
       id: 2,
-      title: 'Personal Portfolio Website (2025)',
-      description: 'Designed and built a responsive personal portfolio with a modern UI.',
-      techStack: ['React.js', 'Javascript', 'CSS'],
-      githubLink: 'https://github.com/placeholder/portfolio',
-      liveLink: 'https://placeholder.com/portfolio-live',
-      image: '/projects/portfolio.png'
+      title: 'NSS GMRIT Management System',
+      description: 'A comprehensive web portal for volunteer attendance tracking and unit activity management for NSS GMRIT.',
+      techStack: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
+      githubLink: 'https://github.com/prudhvi-raju-jubburu/NSS---GMRIT',
+      liveLink: '#',
+      image: '/projects/nss.png'
     },
     {
       id: 3,
-      title: 'Product Recommendation System (2026)',
-      description: 'Developed a product recommendation system using machine learning techniques.',
-      techStack: ['React.js', 'Python', 'Web Scraping', 'Machine Learning'],
-      githubLink: 'https://github.com/naveen957359/Buy-smart',
-      // liveLink: 'https://placeholder.com/chatbot-live',
-      image: '/projects/buy-smart.png'
+      title: 'Modern Personal Portfolio',
+      description: 'A professional, high-performance portfolio website built with React and Vite featuring glassy UI and smooth scroll.',
+      techStack: ['React.js', 'Vite', 'CSS3', 'Lucide React'],
+      githubLink: 'https://github.com/prudhvi-raju-jubburu/personal_potfolio',
+      liveLink: '#',
+      image: '/projects/portfolio.png'
     },
-
     {
       id: 4,
-      title: 'Geo-Enabled Tourism System for Andhra Pradesh using MERN Stack (2026)',
-      description: 'Developed a Geo-Enabled Tourism System for Andhra Pradesh using MERN Stack.',
-      techStack: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
-      githubLink: '#',
-      // liveLink: 'https://placeholder.com/chatbot-live',
-      image: '/projects/visitap.png'
+      title: 'Product Recommendation System',
+      description: 'Leveraging machine learning algorithms to provide personalized product suggestions based on user behavior and web scraping.',
+      techStack: ['React.js', 'Python', 'Web Scraping', 'ML Algorithms'],
+      githubLink: 'https://github.com/naveen957359/Buy-smart',
+      liveLink: '#',
+      image: '/projects/buy-smart.png'
     }
   ];
 
   return (
     <div className="projects-container animate-fade-in">
       <div className="projects-header">
-        <h1 className="page-title">My Projects</h1>
+        <h1 className="page-title">Featured Projects</h1>
         <div className="title-underline"></div>
         <p className="projects-intro">
-          Here is a selection of my recent work. These projects demonstrate my ability to translate ideas into functional, beautiful web applications.
+          Here is a selection of my best work demonstrating my ability to build complex full-stack solutions and user-centric applications.
         </p>
       </div>
 

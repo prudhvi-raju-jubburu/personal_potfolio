@@ -1,9 +1,59 @@
 import { Link } from 'react-router-dom';
-import { FileText, Github, Linkedin, Mail, User } from 'lucide-react';
+import { 
+  FileText, Github, Linkedin, Mail, User, Code2, 
+  Terminal, Database, Layout, Cpu, Zap, 
+  CheckCircle2, Users, Rocket 
+} from 'lucide-react';
 import { useState, useEffect } from 'react';
 import './Home.css';
 
-const roles = ["Aspiring Software Engineer","MERN Stack Developer" ,"Building Scalable Web Applications","Problem Solver" ,"NSS Volunteer", "Seeking Internship Opportunities"];
+const roles = [
+  "MERN Stack Developer", 
+  "Aspiring Software Engineer", 
+  "Problem Solver", 
+  "CS Student @ GMRIT"
+];
+
+const WhyHireMe = () => {
+  const points = [
+    {
+      icon: <Zap size={32} />,
+      title: "Strong MERN Stack Knowledge",
+      desc: "Proficient in building full-stack applications with MongoDB, Express, React, and Node."
+    },
+    {
+      icon: <CheckCircle2 size={32} />,
+      title: "Problem-Solving Mindset",
+      desc: "Passionate about solving complex challenges and optimizing code performance."
+    },
+    {
+      icon: <Users size={32} />,
+      title: "Team Player (NSS Experience)",
+      desc: "Valuable leadership and collaborative skills gained through NSS volunteering."
+    },
+    {
+      icon: <Rocket size={32} />,
+      title: "Quick Learner",
+      desc: "Rapidly adapting to new technologies and staying ahead of industry trends."
+    }
+  ];
+
+  return (
+    <section className="why-hire-section">
+      <h2 className="section-title">Why Hire Me?</h2>
+      <div className="title-underline"></div>
+      <div className="why-hire-grid">
+        {points.map((point, index) => (
+          <div key={index} className="why-hire-card card">
+            <div className="why-icon-wrapper">{point.icon}</div>
+            <h3>{point.title}</h3>
+            <p>{point.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
 
 const Home = () => {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
@@ -28,28 +78,28 @@ const Home = () => {
 
     return () => clearTimeout(timeout);
   }, [currentText, isDeleting, currentRoleIndex]);
+
   return (
     <div className="home-container animate-fade-in">
       <div className="hero-section">
         <div className="profile-image-container">
           <img
             src="/my_profile.png"
-            alt="Profile"
+            alt="J. Prudhvi Raju"
             className="profile-image"
-            onError={(e) => { e.target.src = 'https://via.placeholder.com/250?text=Upload+my_profile.png'; }}
+            onError={(e) => { e.target.src = 'https://via.placeholder.com/280?text=Profile'; }}
           />
         </div>
 
         <div className="hero-content">
-          <h3 className="hero-greeting">👋 Hello, I'm</h3>
-          <h1 className="hero-name text-gradient">Jubburu Prudhvi Raju</h1>
+          <h3 className="hero-greeting">Hi, I'm</h3>
+          <h1 className="hero-name text-gradient">J. Prudhvi Raju</h1>
           <h2 className="hero-role">
-            And I'm a <span className="highlight typing-text">{currentText}<span className="cursor-blink">|</span></span>
+            <span className="typing-text">{currentText}<span className="cursor-blink">|</span></span>
           </h2>
 
           <p className="hero-tagline">
-            Motivated B.Tech student with strong skills in web development and hands-on project experience. 
-            I enjoy building real-world applications and continuously improving my technical skills.
+            I build scalable and user-friendly web applications that solve real-world problems.
           </p>
 
           <div className="social-links">
@@ -63,18 +113,21 @@ const Home = () => {
               <Mail size={24} />
             </a>
           </div>
+
           <div className="hero-buttons">
-            <Link to="/about" className="btn btn-primary">
-              <User size={18} />
-              About Me
+            <Link to="/projects" className="btn btn-primary">
+              <Code2 size={18} />
+              View Projects
             </Link>
             <a href="/Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-outline" download>
               <FileText size={18} />
-              Download CV
+              Download Resume
             </a>
           </div>
         </div>
       </div>
+
+      <WhyHireMe />
     </div>
   );
 };

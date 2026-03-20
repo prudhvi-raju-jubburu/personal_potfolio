@@ -16,12 +16,12 @@ const Navbar = () => {
           <div className="nav-logo-wrapper">
             <img 
               src="/my_profile.png" 
-              alt="Logo" 
+              alt="J. Prudhvi Raju" 
               className="nav-logo-img" 
               onError={(e) => { e.target.src = 'https://via.placeholder.com/80?text=PR'; }}
             />
           </div>
-          <span className="logo-text">Prudhvi <span className="text-gradient">Raju.</span></span>
+          <span className="logo-text">J. Prudhvi <span className="text-gradient">Raju.</span></span>
         </NavLink>
         
         <div className="menu-icon" onClick={toggleMenu}>
@@ -36,7 +36,7 @@ const Navbar = () => {
             <NavLink to="/about" className="nav-links" onClick={closeMenu}>About</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to="/experience" className="nav-links" onClick={closeMenu}>Experience</NavLink>
+            <NavLink to="/certifications" className="nav-links" onClick={closeMenu}>Certifications</NavLink>
           </li>
           <li className="nav-item">
             <NavLink to="/projects" className="nav-links" onClick={closeMenu}>Projects</NavLink>
