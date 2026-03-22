@@ -27,7 +27,7 @@ const Projects = () => {
       description: 'A professional, high-performance portfolio website built with React and Vite featuring glassy UI and smooth scroll.',
       techStack: ['React.js', 'Vite', 'CSS3', 'Lucide React'],
       githubLink: 'https://github.com/prudhvi-raju-jubburu/personal_potfolio',
-      liveLink: '#',
+      liveLink: 'https://prudhviraju-portfolio.vercel.app/',
       image: '/projects/portfolio.png'
     },
     {
