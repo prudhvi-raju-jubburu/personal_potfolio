@@ -1,160 +1,55 @@
 .home-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8rem;
-  padding: 4rem 0;
-  position: relative;
+  padding-top: 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
+/* Hero Section */
 .hero-section {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 5rem;
-  min-height: calc(100vh - 160px);
-  width: 100%;
-}
-
-.profile-image-container {
-  flex-shrink: 0;
-  border-radius: 50%;
-  padding: 8px;
-  background: linear-gradient(135deg, rgba(88, 166, 255, 0.4), rgba(188, 140, 242, 0.2));
-  box-shadow: 0 0 50px rgba(88, 166, 255, 0.2);
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-}
-
-.profile-image {
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: top;
-  border: 4px solid var(--accent-color);
-  background-color: var(--card-bg);
+  justify-content: space-between;
+  min-height: 80vh;
+  gap: 4rem;
+  padding: 2rem 0;
 }
 
 .hero-content {
-  flex: 1;
-  max-width: 600px;
+  flex: 1.2;
 }
 
 .hero-greeting {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
   color: var(--accent-color);
   margin-bottom: 0.5rem;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1px;
 }
 
 .hero-name {
-  font-size: 4.5rem;
-  line-height: 1.1;
+  font-size: 4rem;
+  font-weight: 800;
   margin-bottom: 1rem;
+  line-height: 1.1;
+  font-family: 'Sora', sans-serif;
 }
 
 .hero-role {
-  font-size: 2rem;
+  font-size: 1.8rem;
+  color: var(--text-primary);
   margin-bottom: 1.5rem;
-  color: var(--text-primary);
-  min-height: 1.2em;
+  height: 2.2rem;
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
 }
 
-.hero-tagline {
-  font-size: 1.1rem;
+.typing-text {
   color: var(--text-secondary);
-  margin-bottom: 2.5rem;
-  max-width: 500px;
-}
-
-/* Hero Buttons Gap Fix */
-.hero-buttons {
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-/* Why Hire Section */
-.why-hire-section {
-  width: 100%;
-  max-width: 1200px;
-  padding: 0 1rem;
-}
-
-.why-hire-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2.5rem;
-  width: 100%;
-}
-
-.why-hire-card {
-  padding: 4rem 2rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid var(--card-border);
-}
-
-.why-hire-card:hover {
-  transform: translateY(-10px);
-  border-color: var(--accent-color);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-.why-icon-wrapper {
-  color: var(--accent-color);
-  margin-bottom: 2rem;
-  background: rgba(88, 166, 255, 0.1);
-  width: 72px;
-  height: 72px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 16px;
-  transition: transform 0.3s ease;
-}
-
-.why-hire-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: var(--text-primary);
-  font-weight: 700;
-}
-
-.why-hire-card p {
-  font-size: 1.05rem;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  max-width: 320px;
-}
-
-.social-links {
-  display: flex;
-  gap: 1.5rem;
-  margin-bottom: 2.5rem;
-}
-
-.social-icon {
-  color: var(--text-secondary);
-  transition: all 0.3s ease;
-}
-
-.social-icon:hover {
-  color: var(--accent-color);
-  transform: translateY(-5px);
 }
 
 .cursor-blink {
-  animation: blink 1s step-end infinite;
+  animation: blink 0.7s infinite;
   color: var(--accent-color);
 }
 
@@ -163,11 +58,195 @@
   50% { opacity: 0; }
 }
 
+.hero-tagline {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+}
+
+.social-links {
+  display: flex;
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.social-icon {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.social-icon:hover {
+  background: var(--accent-color);
+  color: #fff;
+  transform: translateY(-5px) rotate(8deg);
+  box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.arrow-icon {
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.btn-primary:hover .arrow-icon {
+  transform: translateX(4px);
+}
+
+/* Profile Image */
+.profile-image-container {
+  flex: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.profile-img-wrapper {
+  position: relative;
+  width: 380px;
+  height: 380px;
+}
+
+.perfect-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50% !important; /* Force perfect circle */
+  object-fit: cover;
+  object-position: top;
+  border: 4px solid var(--accent-color);
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  background-color: var(--bg-tertiary);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.perfect-circle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 25px 60px rgba(56, 189, 248, 0.4);
+  border-color: #fff;
+}
+
+.profile-img-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 115%;
+  height: 115%;
+  background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+  opacity: 0.15;
+  z-index: 1;
+  filter: blur(50px);
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--accent-color);
+  z-index: 10;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Why Hire Section */
+.why-hire-section {
+  padding: 8rem 0 2rem; /* Significantly reduced bottom padding from 8rem */
+}
+
+.why-hire-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem; /* Increased gap for better breathing room */
+  margin-top: 2rem;
+}
+
+.why-hire-card {
+  padding: 3rem 2rem; /* Increased padding for a larger feel */
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--border-color);
+  border-radius: 24px; /* Slightly more rounded */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--shadow-sm);
+  min-height: 380px; /* Increased card size */
+  justify-content: center;
+}
+
+.why-hire-card:hover {
+  transform: translateY(-15px);
+  border-color: var(--accent-color);
+  box-shadow: 0 25px 50px rgba(56, 189, 248, 0.2);
+  background: var(--bg-tertiary);
+}
+
+.why-icon-wrapper {
+  color: var(--accent-color);
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+  width: 70px;
+  height: 70px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.why-hire-card h3 {
+  font-size: 1.1rem; /* Slightly smaller to ensure single line */
+  margin-bottom: 1.25rem;
+  font-family: 'Sora', sans-serif;
+  color: var(--text-primary);
+  font-weight: 700;
+  white-space: nowrap; /* Force single line */
+}
+
+.why-hire-card p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 1024px) {
+  .why-hire-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row on tablets */
+  }
+}
+
 @media screen and (max-width: 968px) {
   .hero-section {
-    flex-direction: column;
+    flex-direction: column-reverse;
     text-align: center;
     gap: 3rem;
+    padding-top: 4rem;
   }
   
   .hero-content {
@@ -175,14 +254,51 @@
     flex-direction: column;
     align-items: center;
   }
-
-  .hero-name { font-size: 3rem; }
   
-  .social-links, .hero-buttons {
+  .hero-name {
+    font-size: 3.2rem;
+  }
+  
+  .hero-role {
+    font-size: 1.5rem;
+  }
+  
+  .hero-buttons {
     justify-content: center;
   }
   
-  .home-container {
-    gap: 6rem;
+  .social-links {
+    justify-content: center;
+  }
+  
+  .profile-img-wrapper {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero-name {
+    font-size: 2.5rem;
+  }
+  
+  .hero-role {
+    font-size: 1.25rem;
+    height: auto;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .btn {
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .profile-image {
+    animation: none;
+    border-radius: 20px;
   }
 }

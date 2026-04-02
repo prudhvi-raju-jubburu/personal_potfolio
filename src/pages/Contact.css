@@ -1,176 +1,195 @@
 .contact-container {
-  padding: 2rem 0;
-  max-width: 1000px;
+  padding-top: 2rem;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .contact-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
 }
 
 .contact-intro {
   max-width: 600px;
-  margin: 1.5rem auto 0;
+  margin: 0 auto;
+  color: var(--text-secondary);
   font-size: 1.1rem;
+  line-height: 1.8;
 }
 
-.contact-content {
+.contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.6fr;
   gap: 3rem;
+  padding-bottom: 5rem;
 }
 
-.contact-info {
-  padding: 2.5rem;
-  background-color: var(--card-bg);
-}
-
-.contact-info h2 {
-  font-size: 1.75rem;
-  margin-bottom: 2rem;
-}
-
-.info-items {
+/* Contact Info Panel */
+.info-cards-stack {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.info-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.5rem;
-}
-
-.icon-wrapper {
-  background-color: var(--bg-color);
-  color: var(--accent-color);
-  padding: 1rem;
-  border-radius: 50%;
+.info-card {
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-
-.info-details h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.25rem;
-  color: var(--text-primary);
-}
-
-.info-details a, 
-.info-details p {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  transition: color 0.2s ease;
-}
-
-.info-details a:hover {
-  color: var(--accent-color);
-}
-
-.contact-form-wrapper {
-  padding: 2.5rem;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.form-label {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.form-input, .form-textarea {
-  width: 100%;
-  padding: 0.8rem 1rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--card-border);
-  border-radius: 8px;
-  color: var(--text-primary);
-  font-family: inherit;
-  font-size: 0.95rem;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
   transition: all 0.3s ease;
 }
 
-.form-textarea {
-  min-height: 120px;
-  resize: vertical;
+.info-icon-box {
+  background: rgba(56, 189, 248, 0.1);
+  color: var(--accent-color);
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(56, 189, 248, 0.2);
 }
 
-.form-input:focus, .form-textarea:focus {
+.info-text span {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.info-text a, .info-text p {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  word-break: break-all;
+}
+
+.info-text a:hover {
+  color: var(--accent-color);
+}
+
+/* Form Panel */
+.contact-form-panel {
+  padding: 3rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
+}
+
+.input-group input, .input-group textarea {
+  background: var(--bg-primary);
+  border: 1.5px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.85rem 1.2rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+}
+
+.input-group input:focus, .input-group textarea:focus {
   outline: none;
   border-color: var(--accent-color);
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 0 0 4px rgba(88, 166, 255, 0.1);
-}
-
-.form-input::placeholder, .form-textarea::placeholder {
-  color: #555;
+  background: var(--bg-tertiary);
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.1);
 }
 
 .submit-btn {
-  width: 100%;
-  padding: 0.9rem;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: var(--border-radius-lg);
   margin-top: 1rem;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
+  align-self: flex-start;
 }
 
-.submit-btn.loading {
-  opacity: 0.8;
+.submit-btn:disabled {
+  opacity: 0.7;
   cursor: not-allowed;
 }
 
-.success-message {
-  height: 100%;
+/* Success State */
+.success-state {
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  animation: fadeIn 0.5s ease-out;
-  padding: 2rem 1rem;
+  gap: 1.5rem;
 }
 
-.success-icon {
-  color: #10b981;
-  margin-bottom: 2rem;
-  filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.2));
+.success-lottie-mock {
+  color: #27c93f;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 10px rgba(39, 201, 63, 0.3));
 }
 
-.success-message h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: var(--text-primary);
+.success-state h3 {
+  font-size: 2rem;
+  font-family: 'Sora', sans-serif;
 }
 
-.success-message p {
-  margin-bottom: 2rem;
-  max-width: 300px;
+.success-state p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@media screen and (max-width: 868px) {
-  .contact-content {
+@media screen and (max-width: 968px) {
+  .contact-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-form-panel {
+    padding: 2rem;
+  }
+  
+  .submit-btn {
+    width: 100%;
   }
 }

@@ -1,13 +1,69 @@
-.project-card {
+.project-card-wrapper {
   display: flex;
   flex-direction: column;
   height: 100%;
+  position: relative;
+}
+
+.project-card {
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Full Card Live Demo Link */
+.card-overlay-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+}
+
+.project-card:hover {
+  border-color: var(--accent-color);
+  box-shadow: 0 15px 35px rgba(56, 189, 248, 0.15);
+}
+
+.project-external-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.project-card:hover .project-external-icon {
+  transform: rotate(15deg) scale(1.1);
+  background: var(--accent-color);
+  color: #fff;
+  border-color: var(--accent-color);
 }
 
 .project-image-wrapper {
   width: 100%;
-  height: 200px;
+  height: 220px;
   overflow: hidden;
+  position: relative;
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -15,62 +71,92 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: none !important;
 }
 
-.project-card:hover .project-image {
-  transform: scale(1.1);
+.image-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.4));
+  opacity: 0.6;
 }
+
+.project-card:hover .project-image { transform: scale(1.08); }
 
 .project-content {
-  padding: 1.5rem;
+  padding: 1.5rem 1.5rem 3.5rem; /* Bottom padding to accommodate the GitHub link */
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-title {
   font-size: 1.25rem;
   margin-bottom: 0.75rem;
   color: var(--text-primary);
+  font-family: 'Sora', sans-serif;
 }
 
 .project-desc {
   font-size: 0.95rem;
   color: var(--text-secondary);
-  line-height: 1.5;
+  line-height: 1.6;
   margin-bottom: 1.5rem;
+  flex: 1;
 }
 
 .project-tech {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 1rem;
 }
 
 .tech-tag {
-  background-color: rgba(59, 130, 246, 0.05);
+  background-color: var(--bg-tertiary);
   color: var(--accent-color);
   font-size: 0.75rem;
-  font-weight: 500;
-  padding: 0.25rem 0.6rem;
-  border-radius: 4px;
-  border: 1px solid rgba(59, 130, 246, 0.1);
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
 }
 
-.project-footer {
-  padding: 1.25rem 1.5rem;
-  border-top: 1px solid var(--border-color);
-  display: flex;
-  gap: 1rem;
-  background-color: rgba(0, 0, 0, 0.1);
+/* GitHub Source Code - Simple Link Style */
+.project-card-footer-overlay {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  pointer-events: none;
+  z-index: 15;
 }
 
-.project-btn {
-  flex: 1;
-  padding: 0.5rem;
+.github-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  color: var(--text-secondary);
+  border: none;
+  text-decoration: none;
   font-size: 0.85rem;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+  pointer-events: auto;
+  opacity: 0.7;
 }
 
-.project-btn svg {
-  margin-right: -0.25rem;
+.github-button:hover {
+  color: var(--accent-color);
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+@media screen and (max-width: 480px) {
+  .project-image-wrapper { height: 180px; }
+  .project-title { font-size: 1.15rem; }
+  .project-content { padding-bottom: 3.25rem; }
 }

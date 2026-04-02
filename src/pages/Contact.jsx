@@ -1,131 +1,162 @@
-import { Mail, Github, Linkedin, MapPin, Send, CheckCircle2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, Github, Linkedin, MapPin, Send, CheckCircle2, Phone } from 'lucide-react';
 import { useState } from 'react';
 import './Contact.css';
 
 const Contact = () => {
-  const [formStatus, setFormStatus] = useState('idle'); // idle, sending, success, error
+  const [formStatus, setFormStatus] = useState('idle');
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setFormStatus('sending');
-
-    // To make this REALLY work without a backend, you can use Formspree.
-    // Example: fetch("https://formspree.io/f/YOUR_FORM_ID", { ... })
-    
-    // Simulating a real request
     setTimeout(() => {
       setFormStatus('success');
       e.target.reset();
-      
-      // Reset status after 5 seconds
-      setTimeout(() => setFormStatus('idle'), 5000);
-    }, 1500);
+      setTimeout(() => setFormStatus('idle'), 6000);
+    }, 1200);
   };
 
+  const infoItems = [
+    { 
+      icon: <Mail size={22} />, 
+      title: "Email", 
+      value: "jubburuprudhviraju@gmail.com",
+      link: "mailto:jubburuprudhviraju@gmail.com"
+    },
+    { 
+      icon: <MapPin size={22} />, 
+      title: "Location", 
+      value: "Eluru, Andhra Pradesh",
+      link: null
+    },
+    { 
+      icon: <Linkedin size={22} />, 
+      title: "LinkedIn", 
+      value: "J. Prudhvi Raju",
+      link: "https://www.linkedin.com/in/jubburu-prudhvi-raju-8a6213374/"
+    },
+    { 
+      icon: <Github size={22} />, 
+      title: "GitHub", 
+      value: "@prudhvi-raju-jubburu",
+      link: "https://github.com/prudhvi-raju-jubburu"
+    }
+  ];
+
   return (
-    <div className="contact-container animate-fade-in">
+    <motion.div 
+      className="contact-container"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <div className="contact-header">
-        <h1 className="page-title">Contact Me</h1>
+        <h1 className="section-title">Get In <span className="text-gradient">Touch</span></h1>
         <div className="title-underline"></div>
         <p className="contact-intro">
-          I'm currently looking for new opportunities, my inbox is always open. 
-          Whether you have a question or just want to say hi, I'll try my best to get back to you!
+          I'm always open to new opportunities, collaborations, or just a friendly hello. 
+          Feel free to reach out using the form or through my social channels!
         </p>
       </div>
 
-      <div className="contact-content">
-        <div className="contact-info card">
-          <h2>Get In Touch</h2>
-          
-          <div className="info-items">
-            <div className="info-item">
-              <div className="icon-wrapper">
-                <Mail size={24} />
-              </div>
-              <div className="info-details">
-                <h3>Email</h3>
-                <a href="mailto:jubburuprudhviraju@gmail.com">jubburuprudhviraju@gmail.com</a>
-              </div>
-            </div>
-
-            <div className="info-item">
-              <div className="icon-wrapper">
-                <MapPin size={24} />
-              </div>
-              <div className="info-details">
-                <h3>Location</h3>
-                <p>Eluru, Andhra Pradesh</p>
-              </div>
-            </div>
-            
-            <div className="info-item">
-              <div className="icon-wrapper">
-                <Github size={24} />
-              </div>
-              <div className="info-details">
-                <h3>GitHub</h3>
-                <a href="https://github.com/prudhvi-raju-jubburu" target="_blank" rel="noopener noreferrer">prudhvi-raju-jubburu</a>
-              </div>
-            </div>
-
-            <div className="info-item">
-              <div className="icon-wrapper">
-                <Linkedin size={24} />
-              </div>
-              <div className="info-details">
-                <h3>LinkedIn</h3>
-                <a href="https://www.linkedin.com/in/jubburu-prudhvi-raju-8a6213374/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="contact-form-wrapper card">
-          {formStatus === 'success' ? (
-            <div className="success-message">
-              <CheckCircle2 size={60} className="success-icon" />
-              <h3>Message Sent Successfully!</h3>
-              <p>Thank you for reaching out. I will get back to you as soon as possible.</p>
-              <button className="btn btn-outline" onClick={() => setFormStatus('idle')}>
-                Send Another Message
-              </button>
-            </div>
-          ) : (
-            <form className="contact-form" onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label htmlFor="name" className="form-label">Name</label>
-                <input type="text" id="name" name="name" className="form-input" placeholder="Your Name" required />
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="email" className="form-label">Email</label>
-                <input type="email" id="email" name="email" className="form-input" placeholder="Your Email" required />
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="message" className="form-label">Message</label>
-                <textarea id="message" name="message" className="form-textarea" placeholder="Your Message" required></textarea>
-              </div>
-              
-              <button 
-                type="submit" 
-                className={`btn btn-primary submit-btn ${formStatus === 'sending' ? 'loading' : ''}`}
-                disabled={formStatus === 'sending'}
+      <div className="contact-grid">
+        <motion.div 
+          className="contact-info-panel"
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="info-cards-stack">
+            {infoItems.map((item, idx) => (
+              <motion.div 
+                key={idx} 
+                className="info-card card"
+                whileHover={{ x: 10, borderColor: 'var(--accent-color)' }}
               >
-                {formStatus === 'sending' ? (
-                  <>Sending...</>
-                ) : (
-                  <>
-                    <Send size={18} />
-                    Send Message
-                  </>
-                )}
-              </button>
-            </form>
-          )}
-        </div>
+                <div className="info-icon-box">{item.icon}</div>
+                <div className="info-text">
+                  <span>{item.title}</span>
+                  {item.link ? (
+                    <a href={item.link} target="_blank" rel="noopener noreferrer">{item.value}</a>
+                  ) : (
+                    <p>{item.value}</p>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div 
+          className="contact-form-panel card"
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <AnimatePresence mode="wait">
+            {formStatus === 'success' ? (
+              <motion.div 
+                className="success-state"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                key="success"
+              >
+                <div className="success-lottie-mock">
+                  <CheckCircle2 size={80} />
+                </div>
+                <h3>Message Received!</h3>
+                <p>Thanks for reaching out, Prudhvi will get back to you shortly.</p>
+                <button className="btn btn-outline" onClick={() => setFormStatus('idle')}>
+                  Send Another
+                </button>
+              </motion.div>
+            ) : (
+              <motion.form 
+                className="contact-form" 
+                onSubmit={handleSubmit}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                key="form"
+              >
+                <div className="form-row">
+                  <div className="input-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="John Doe" required />
+                  </div>
+                  <div className="input-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="john@example.com" required />
+                  </div>
+                </div>
+                <div className="input-group">
+                  <label>Subject</label>
+                  <input type="text" placeholder="Project Inquiry" required />
+                </div>
+                <div className="input-group">
+                  <label>Message</label>
+                  <textarea placeholder="How can I help you today?" rows="5" required></textarea>
+                </div>
+                <button 
+                  type="submit" 
+                  className={`btn btn-primary submit-btn ${formStatus === 'sending' ? 'loading' : ''}`}
+                  disabled={formStatus === 'sending'}
+                >
+                  {formStatus === 'sending' ? (
+                    <span className="loader"></span>
+                  ) : (
+                    <>
+                      <Send size={18} />
+                      <span>Send Message</span>
+                    </>
+                  )}
+                </button>
+              </motion.form>
+            )}
+          </AnimatePresence>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,206 +1,217 @@
-import './About.css';
-import { 
-  Briefcase, GraduationCap, Users, Heart, Target, 
-  Layout, Terminal, Database, Cpu 
+import { motion } from 'framer-motion';
+import {
+  Briefcase, GraduationCap, Users, Heart, Target,
+  Layout, Terminal, Database, Cpu, Code2, Globe, Rocket,
+  CheckCircle2, Sparkles
 } from 'lucide-react';
+import './About.css';
 
 const About = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
+  const skillCategories = [
+    {
+      title: 'Frontend',
+      icon: <Layout className="category-icon frontend" />,
+      skills: ['React.js', 'Vite', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind', 'Framer Motion', 'Redux']
+    },
+    {
+      title: 'Backend',
+      icon: <Terminal className="category-icon backend" />,
+      skills: ['Node.js', 'Express.js', 'Flask', 'REST APIs', 'JWT Auth', 'Postman']
+    },
+    {
+      title: 'Database',
+      icon: <Database className="category-icon database" />,
+      skills: ['MongoDB', 'MySQL', 'PostgreSQL', 'Firebase']
+    },
+    {
+      title: 'Programming',
+      icon: <Cpu className="category-icon languages" />,
+      skills: ['JavaScript', 'Python', 'C', 'C++', 'Java']
+    },
+    {
+      title: 'Tools & Deploy',
+      icon: <Globe className="category-icon tools" />,
+      skills: ['Git', 'GitHub', 'Vercel', 'Netlify', 'VS Code', 'Docker']
+    },
+    {
+      title: 'Soft Skills',
+      icon: <Users className="category-icon soft-skills" />,
+      skills: ['Communication', 'Collaboration', 'Adaptability', 'Management', 'Leadership']
+    },
+    {
+      title: 'Interests',
+      icon: <Rocket className="category-icon interests" />,
+      skills: ['Scalable Apps', 'Gen AI / Agents', 'Open Source']
+    }
+  ];
+
   return (
-    <div className="about-container animate-fade-in">
+    <motion.div
+      className="about-container"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
       <div className="about-header">
-        <h1 className="page-title">About Me</h1>
+        <motion.h1 variants={itemVariants} className="section-title">
+          About <span className="text-gradient">Me</span>
+        </motion.h1>
         <div className="title-underline"></div>
       </div>
 
       <div className="about-content">
-        <section className="about-main card">
+        <motion.section variants={itemVariants} className="about-main card">
           <div className="professional-summary">
-            <h2>Professional Summary</h2>
+            <h2 className="subheading-gradient">Crafting Digital Excellence</h2>
             <p>
-              I am a dedicated <strong>B.Tech Computer Science student</strong> at GMR Institute of Technology with a passion for building 
-              impactful digital solutions. As a <strong>MERN Stack Developer</strong>, I specialize in creating 
-              scalable, user-centric web applications using modern technologies like <strong>React, Node.js, and MongoDB</strong>.
+              I’m a <strong>B.Tech Computer Science student</strong> at GMR Institute of Technology and an aspiring <strong>MERN Stack Developer</strong>, passionate about building scalable and high-performance web applications. I focus on creating seamless user experiences by combining efficient backend systems with intuitive frontend design.
             </p>
             <p>
-              My journey is fueled by a strong foundation in <strong>JavaScript and Python</strong>, combined with hands-on project 
-              experience in full-stack development and machine learning. Beyond technical skills, I am an active 
-              <strong> NSS Volunteer</strong>, which has shaped my leadership and teamwork abilities through community service.
+              Skilled in <strong>MongoDB, Express.js, React.js, Node.js, Python, and Flask</strong>, I emphasize <strong>clean, maintainable code</strong> and real-world problem solving. I continuously explore modern technologies, including <strong>AI-driven applications</strong>, to stay industry-ready.
+            </p>
+            <p>
+              Beyond development, my experience as an <strong>NSS Volunteer</strong> has strengthened my leadership, teamwork, and adaptability, enabling me to contribute effectively to both technical and community-driven projects.
             </p>
           </div>
-          
+
           <div className="about-highlights">
             <div className="highlight-item">
-              <Users className="highlight-icon" />
+              <div className="highlight-icon-wrapper"><Users size={20} /></div>
               <div>
-                <h4>Teamwork & Leadership</h4>
-                <p>NSS experience in leading group activities and community outreach.</p>
+                <h4>Collaborative Leader</h4>
+                <p>Leading community initiatives through NSS volunteer work.</p>
               </div>
             </div>
             <div className="highlight-item">
-              <Target className="highlight-icon" />
+              <div className="highlight-icon-wrapper"><Target size={20} /></div>
               <div>
-                <h4>Problem-Solver</h4>
-                <p>Passionate about algorithmic challenges and system design.</p>
+                <h4>Strategic Thinker</h4>
+                <p>Solving complex problems with structured system design.</p>
               </div>
             </div>
             <div className="highlight-item">
-              <Heart className="highlight-icon" />
+              <div className="highlight-icon-wrapper"><Heart size={20} /></div>
               <div>
-                <h4>Continuous Learner</h4>
-                <p>Eager to adopt new frameworks and industry best practices.</p>
+                <h4>Lifelong Learner</h4>
+                <p>Constantly evolving with the latest tech stack shifts.</p>
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
-        <section className="skills-overview card">
-          <h2 className="sub-title"><Layout size={24} /> Skills</h2>
-          <div className="skills-grid extended">
-            <div className="skill-card">
-              <div className="skill-header">
-                <Layout className="skill-icon frontend" />
-                <h3>Frontend</h3>
-              </div>
-              <ul className="skill-tags">
-                <li><span className="skill-tag">HTML5</span></li>
-                <li><span className="skill-tag">CSS3</span></li>
-                <li><span className="skill-tag">React.js</span></li>
-              </ul>
-            </div>
-            
-            <div className="skill-card">
-              <div className="skill-header">
-                <Cpu className="skill-icon languages" />
-                <h3>Programming</h3>
-              </div>
-              <ul className="skill-tags">
-                <li><span className="skill-tag">C</span></li>
-                <li><span className="skill-tag">C++</span></li>
-                <li><span className="skill-tag">Python</span></li>
-                <li><span className="skill-tag">JavaScript</span></li>
-              </ul>
-            </div>
-
-            <div className="skill-card">
-              <div className="skill-header">
-                <Terminal className="skill-icon backend" />
-                <h3>Backend</h3>
-              </div>
-              <ul className="skill-tags">
-                <li><span className="skill-tag">Node.js</span></li>
-                <li><span className="skill-tag">Express.js</span></li>
-              </ul>
-            </div>
-
-            <div className="skill-card">
-              <div className="skill-header">
-                <Database className="skill-icon database" />
-                <h3>Database</h3>
-              </div>
-              <ul className="skill-tags">
-                <li><span className="skill-tag">MongoDB</span></li>
-                <li><span className="skill-tag">SQL (MySQL)</span></li>
-              </ul>
-            </div>
-
-            <div className="skill-card">
-              <div className="skill-header">
-                <Briefcase className="skill-icon tools" />
-                <h3>Tools</h3>
-              </div>
-              <ul className="skill-tags">
-                <li><span className="skill-tag">Git</span></li>
-                <li><span className="skill-tag">GitHub</span></li>
-                <li><span className="skill-tag">VS Code</span></li>
-              </ul>
-            </div>
-
-            <div className="skill-card">
-              <div className="skill-header">
-                <Heart className="skill-icon soft-skills" />
-                <h3>Soft Skills</h3>
-              </div>
-              <ul className="skill-tags">
-                <li><span className="skill-tag">Teamwork</span></li>
-                <li><span className="skill-tag">Adaptability</span></li>
-                <li><span className="skill-tag">Problem Solving</span></li>
-                <li><span className="skill-tag">Leadership</span></li>
-              </ul>
-            </div>
-
-            <div className="skill-card">
-              <div className="skill-header">
-                <Users className="skill-icon languages-known" />
-                <h3>Languages</h3>
-              </div>
-              <ul className="skill-tags">
-                <li><span className="skill-tag">English</span></li>
-                <li><span className="skill-tag">Telugu</span></li>
-              </ul>
-            </div>
+        {/* Tech Stack Section */}
+        <motion.section variants={itemVariants} className="tech-stack-section">
+          <div className="section-header">
+            <h2 className="sub-title"><Sparkles size={28} className="text-gradient-icon" /> Technologies I Work With</h2>
+            <div className="sub-title-line"></div>
           </div>
-        </section>
-
-        <section className="about-details">
-          <div className="education-column">
-            <h2 className="sub-title"><GraduationCap size={24} /> Education Journey</h2>
-            <div className="timeline-v2">
-              <div className="timeline-box card">
-                <span className="timeline-date">2023 - 2027</span>
-                <h3>B.Tech (CSE)</h3>
-                <p className="institution">GMR Institute of Technology, Rajam</p>
-                <div className="grade-pill">CGPA: 9.0</div>
-              </div>
-              <div className="timeline-box card">
-                <span className="timeline-date">2021 - 2023</span>
-                <h3>Intermediate (MPC)</h3>
-                <p className="institution">Vidya Vikas Junior College, Eluru</p>
-                <div className="grade-pill">GPA: 9.6</div>
-              </div>
-              <div className="timeline-box card">
-                <span className="timeline-date">2021</span>
-                <h3>Secondary Education</h3>
-                <p className="institution">ZPP High School, Raghavapuram</p>
-                <div className="grade-pill">GPA: 9.7</div>
-              </div>
-            </div>
+          
+          <div className="tech-stack-grid">
+            {skillCategories.map((category, idx) => (
+              <motion.div
+                key={idx}
+                className="tech-card glass-card"
+                variants={itemVariants}
+                whileHover={{ 
+                  y: -10, 
+                  scale: 1.02,
+                  boxShadow: "0 20px 40px rgba(56, 189, 248, 0.15)"
+                }}
+              >
+                <div className="tech-card-header">
+                  <div className="icon-badge">
+                    {category.icon}
+                  </div>
+                  <h3>{category.title}</h3>
+                </div>
+                <div className="skill-pills">
+                  {category.skills.map((skill, sIdx) => (
+                    <div key={sIdx} className="skill-pill">
+                      <CheckCircle2 size={12} className="pill-check" />
+                      <span>{skill}</span>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
           </div>
+        </motion.section>
 
-          <div className="internship-column">
-            <h2 className="sub-title"><Briefcase size={24} /> Experience Highlights</h2>
-            <div className="experience-summary card">
-              <div className="exp-item">
-                <div className="exp-dot"></div>
-                <div>
-                  <h4>MERN Stack Intern</h4>
-                  <p className="exp-info">Codec Technologies Pvt. Ltd. (Oct 2025)</p>
+        <div className="about-details-grid">
+          <motion.section variants={itemVariants} className="education-column">
+            <h2 className="sub-title"><GraduationCap size={24} /> Education</h2>
+            <div className="timeline">
+              {[
+                { date: '2023 - 2027', degree: 'B.Tech (CSE)', school: 'GMR Institute of Technology', grade: 'CGPA: 9.0' },
+                { date: '2021 - 2023', degree: 'Intermediate (MPC)', school: 'Vidya Vikas Junior College', grade: '9.6 GPA' },
+                { date: '2021', degree: 'Secondary Education', school: 'ZPP High School', grade: '9.7 GPA' }
+              ].map((edu, idx) => (
+                <div key={idx} className="timeline-item card">
+                  <span className="timeline-date">{edu.date}</span>
+                  <h3>{edu.degree}</h3>
+                  <p>{edu.school}</p>
+                  <div className="grade-pill">{edu.grade}</div>
+                </div>
+              ))}
+            </div>
+          </motion.section>
+
+          <motion.section variants={itemVariants} className="experience-column">
+            <h2 className="sub-title"><Briefcase size={24} /> Experience</h2>
+            <div className="experience-list card">
+              {[
+                {
+                  role: 'MERN Stack Intern',
+                  company: 'Codec Technologies Pvt. Ltd.',
+                  date: 'Oct 2025',
+                  points: [
+                    'Engineered dynamic UI with React.js and state management.',
+                    'Developed secure REST APIs using Node.js and Express.',
+                    'Optimized MongoDB schemas for high-traffic data handling.'
+                  ]
+                },
+                {
+                  role: 'AI Technologies Intern',
+                  company: 'EdyGrad One Pvt. Ltd.',
+                  date: 'June 2025',
+                  points: [
+                    'Applied ML models for predictive data analysis.',
+                    'Preprocessed complex datasets for model training.',
+                    'Explored neural networks for real-world automation.'
+                  ]
+                }
+              ].map((exp, idx) => (
+                <div key={idx} className="exp-block">
+                  <div className="exp-dot"></div>
+                  <h4>{exp.role}</h4>
+                  <p className="exp-info">{exp.company} • {exp.date}</p>
                   <ul className="exp-bullets">
-                    <li>Built responsive UI components using React.js and managed state effectively.</li>
-                    <li>Developed RESTful APIs with Node.js and Express for data handling.</li>
-                    <li>Integrated MongoDB for scalable and efficient database management.</li>
+                    {exp.points.map((p, pIdx) => <li key={pIdx}>{p}</li>)}
                   </ul>
                 </div>
-              </div>
-              <div className="exp-item">
-                <div className="exp-dot"></div>
-                <div>
-                  <h4>AI Technologies Intern</h4>
-                  <p className="exp-info">EdyGrad One Pvt. Ltd. (June 2025)</p>
-                  <ul className="exp-bullets">
-                    <li>Explored core Artificial Intelligence and Machine Learning concepts.</li>
-                    <li>Gained experience in data preprocessing and model evaluation metrics.</li>
-                    <li>Studied neural network architectures and their real-world applications.</li>
-                  </ul>
-                </div>
-              </div>
-              <p className="exp-note">
-                Gained solid exposure to full-stack workflows, component design, and AI/ML model integration.
-              </p>
+              ))}
             </div>
-          </div>
-        </section>
+          </motion.section>
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
