@@ -237,7 +237,24 @@
 /* Responsiveness */
 @media screen and (max-width: 1024px) {
   .why-hire-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 per row on tablets */
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .why-hire-grid {
+    grid-template-columns: 1fr; /* 1 per row on mobile for better readability */
+    gap: 1.5rem;
+  }
+  
+  .why-hire-card {
+    min-height: auto; /* Allow auto height on mobile */
+    padding: 2.5rem 1.5rem;
+  }
+  
+  .why-hire-card h3 {
+    white-space: normal; /* Allow wrap if name is extremely long on narrow mobile */
+    font-size: 1.25rem;
   }
 }
 

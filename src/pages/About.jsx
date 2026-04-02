@@ -17,8 +17,8 @@ const About = () => {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.6, ease: "easeOut" }
     }
@@ -28,7 +28,7 @@ const About = () => {
     {
       title: 'Frontend',
       icon: <Layout className="category-icon frontend" />,
-      skills: ['React.js', 'Vite', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind', 'Framer Motion', 'Redux']
+      skills: ['React.js', 'JavaScript', 'HTML5', 'CSS3']
     },
     {
       title: 'Backend',
@@ -38,22 +38,22 @@ const About = () => {
     {
       title: 'Database',
       icon: <Database className="category-icon database" />,
-      skills: ['MongoDB', 'MySQL', 'PostgreSQL', 'Firebase']
+      skills: ['MongoDB', 'MySQL']
     },
     {
       title: 'Programming',
       icon: <Cpu className="category-icon languages" />,
-      skills: ['JavaScript', 'Python', 'C', 'C++', 'Java']
+      skills: ['JavaScript', 'Python', 'C', 'C++']
     },
     {
       title: 'Tools & Deploy',
       icon: <Globe className="category-icon tools" />,
-      skills: ['Git', 'GitHub', 'Vercel', 'Netlify', 'VS Code', 'Docker']
+      skills: ['Git', 'GitHub', 'VS Code']
     },
     {
       title: 'Soft Skills',
       icon: <Users className="category-icon soft-skills" />,
-      skills: ['Communication', 'Collaboration', 'Adaptability', 'Management', 'Leadership']
+      skills: ['Communication', 'Collaboration & Management', 'Adaptability', 'Leadership']
     },
     {
       title: 'Interests',
@@ -122,15 +122,15 @@ const About = () => {
             <h2 className="sub-title"><Sparkles size={28} className="text-gradient-icon" /> Technologies I Work With</h2>
             <div className="sub-title-line"></div>
           </div>
-          
+
           <div className="tech-stack-grid">
             {skillCategories.map((category, idx) => (
               <motion.div
                 key={idx}
                 className="tech-card glass-card"
                 variants={itemVariants}
-                whileHover={{ 
-                  y: -10, 
+                whileHover={{
+                  y: -10,
                   scale: 1.02,
                   boxShadow: "0 20px 40px rgba(56, 189, 248, 0.15)"
                 }}
