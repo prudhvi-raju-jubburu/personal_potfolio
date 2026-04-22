@@ -9,7 +9,7 @@ const Projects = () => {
       title: 'Geo-Enabled Tourism System',
       description: 'A comprehensive full-stack tourism platform for Andhra Pradesh. Features include interactive maps, point-of-interest discovery, and real-time navigation integration for travelers.',
       techStack: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Maps API'],
-      githubLink: 'https://github.com/prudhvi-raju-jubburu',
+      githubLink: 'https://github.com/prudhvi-raju-jubburu/visitap',
       // liveLink: 'https://visit-ap.vercel.app/',
       image: '/projects/visitap.png'
     },
