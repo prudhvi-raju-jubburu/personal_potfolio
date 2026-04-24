@@ -43,7 +43,7 @@ const About = () => {
     {
       title: 'Programming',
       icon: <Cpu className="category-icon languages" />,
-      skills: ['JavaScript', 'Python', 'C', 'C++']
+      skills: ['C', 'Python', 'C++']
     },
     {
       title: 'Tools & Deploy',
