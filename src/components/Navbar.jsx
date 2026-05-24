@@ -35,7 +35,7 @@ const Navbar = () => {
         <NavLink to="/" className="navbar-logo" onClick={closeMenu}>
           <div className="nav-logo-wrapper">
             <img 
-              src="/my_profile.png" 
+              src="/profile.jpeg" 
               alt="J. Prudhvi Raju" 
               className="nav-logo-img" 
               onError={(e) => { e.target.src = 'https://via.placeholder.com/80?text=PR'; }}
