@@ -191,7 +191,7 @@ const Home = () => {
         >
           <div className="profile-img-wrapper">
             <img
-              src="/my_profile.png"
+              src="/profile.jpeg"
               alt="J. Prudhvi Raju"
               className="profile-image perfect-circle"
               onError={(e) => { e.target.src = 'https://via.placeholder.com/300?text=Profile'; }}
