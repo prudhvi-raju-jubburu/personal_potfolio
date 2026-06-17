@@ -8,11 +8,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import './Home.css';
 
 const roles = [
-  "Aspiring Software Engineer",
-  "MERN Stack Developer",
   "Computer Science Student @ GMRIT",
-  "Problem Solver & Tech Enthusiast",
-  "Actively Seeking Internship Opportunities"
+  "MERN Stack Developer",
+  "AI Technologies Intern",
+  "Problem Solver & Tech Enthusiast"
 ];
 
 const WhyHireMe = () => {
@@ -145,7 +144,7 @@ const Home = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
           >
-            I architect elegant, high-performance web applications that bridge the gap between technical complexity and intuitive user experiences.
+            Computer Science undergraduate skilled in building responsive full-stack applications using the MERN stack, database systems, and AI-powered solutions.
           </motion.p>
 
           <motion.div 
@@ -157,6 +156,7 @@ const Home = () => {
             {[
               { icon: <Github size={22} />, url: "https://github.com/prudhvi-raju-jubburu", title: "GitHub" },
               { icon: <Linkedin size={22} />, url: "https://www.linkedin.com/in/jubburu-prudhvi-raju-8a6213374/", title: "LinkedIn" },
+              { icon: <Code2 size={22} />, url: "https://leetcode.com/u/CS23341A05A7/", title: "LeetCode" },
               { icon: <Mail size={22} />, url: "mailto:jubburuprudhviraju@gmail.com", title: "Email" }
             ].map((social, idx) => (
               <a key={idx} href={social.url} target="_blank" rel="noopener noreferrer" className="social-icon" title={social.title}>

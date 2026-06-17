@@ -6,41 +6,30 @@ const Projects = () => {
   const projectsData = [
     {
       id: 1,
-      title: 'Visist Ap : Geo-Enabled Tourism System',
-      description: 'A comprehensive full-stack tourism platform for Andhra Pradesh. Features include interactive maps, point-of-interest discovery, and real-time navigation integration for travelers.',
-      techStack: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Maps API'],
+      title: 'Visit AP - Tourism Website',
+      description: 'A tourism platform that helps users explore tourist destinations across Andhra Pradesh with location-based information and travel guidance. Developed REST APIs and integrated MongoDB for managing destinations, reviews, ratings, and dynamic content.',
+      techStack: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
       githubLink: 'https://github.com/prudhvi-raju-jubburu/visitap',
-      // liveLink: 'https://visit-ap.vercel.app/',
+      liveLink: 'https://visitap.vercel.app/',
       image: '/projects/visitap.png'
     },
-    
     {
       id: 2,
-      title: 'Smart Product Recommendation Engine',
-      description: 'An AI-powered recommendation engine that leverages machine learning and web scraping to provide personalized product suggestions based on user behavior and market trends.',
-      techStack: ['React.js', 'Python', 'Scrapy', 'ML Algorithms'],
-      githubLink: 'https://github.com/prudhvi-raju-jubburu/BuySmart',
-      // liveLink: 'https://buy-smart-ten.vercel.app/',
-      image: '/projects/buy-smart.png'
+      title: 'FarmerDirect - Farmer to Consumer Platform',
+      description: 'A digital marketplace connecting farmers directly with consumers, eliminating intermediaries and improving market accessibility. Implemented JWT authentication, product management, order processing, reviews, and location-based product discovery.',
+      techStack: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
+      githubLink: 'https://github.com/LokeshRaivada/Farmer-to-Consumer-Project',
+      image: '/projects/farmerdirect.png'
     },
     {
       id: 3,
-      title: 'Personal Portfolio ',
-      description: 'A professional, high-performance developer portfolio featuring a glassy UI, dynamic themes, and buttery-smooth animations. Optimized for accessibility and fast loading speeds.',
-      techStack: ['React.js', 'Vite', 'Framer Motion', 'Lucide React'],
-      githubLink: 'https://github.com/prudhvi-raju-jubburu/personal_potfolio',
-      liveLink: 'https://prudhviraju-portfolio.vercel.app/',
-      image: '/projects/portfolio.png'
-    },
-    // {
-    //   id: 4,
-    //   title: 'NSS GMRIT Portal',
-    //   description: 'A robust management system developed for NSS GMRIT to streamline volunteer attendance tracking, unit activity reporting, and organizational management.',
-    //   techStack: ['HTML5', 'CSS3', 'JavaScript', 'PHP', 'MySQL'],
-    //   githubLink: 'https://github.com/prudhvi-raju-jubburu/NSS---GMRIT',
-    //   // liveLink: '#',
-    //   image: '/projects/nss.png'
-    // }
+      title: 'Buy Smart - Recommendation System',
+      description: 'A product recommendation system that helps users discover relevant products from multiple e-commerce platforms. Applied filtering techniques and web scraping to generate personalized recommendations using user behavior and product data.',
+      techStack: ['React.js', 'JavaScript', 'Python', 'Web Scraping'],
+      githubLink: 'https://github.com/prudhvi-raju-jubburu/BuySmart',
+      liveLink: 'https://buysmart-ai.vercel.app/',
+      image: '/projects/buy-smart.png'
+    }
   ];
 
   const containerVariants = {

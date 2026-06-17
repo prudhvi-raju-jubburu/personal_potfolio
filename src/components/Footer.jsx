@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Heart, ExternalLink, MapPin, Phone } from 'lucide-react';
+import { Github, Linkedin, Mail, Heart, ExternalLink, MapPin, Phone, Code2 } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import './Footer.css';
 
@@ -20,6 +20,9 @@ const Footer = () => {
               </a>
               <a href="https://www.linkedin.com/in/jubburu-prudhvi-raju-8a6213374/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <Linkedin size={20} />
+              </a>
+              <a href="https://leetcode.com/u/CS23341A05A7/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
+                <Code2 size={20} />
               </a>
               <a href="mailto:jubburuprudhviraju@gmail.com" aria-label="Email">
                 <Mail size={20} />
@@ -52,7 +55,7 @@ const Footer = () => {
               </div>
               <div className="contact-info-item">
                 <Phone size={16} className="contact-icon" />
-                <span>Available on inquiry</span>
+                <span>+91 79816 13325</span>
               </div>
             </div>
           </div>
@@ -64,7 +67,7 @@ const Footer = () => {
             <div className="footer-legal">
               <span>All Rights Reserved</span>
               <span>•</span>
-              <span>Design & Dev by Prudhvi</span>
+              <span>Design & Dev by <a href="https://www.linkedin.com/in/jubburu-prudhvi-raju-8a6213374/" target="_blank" rel="noopener noreferrer" className="footer-dev-link">Prudhvi</a></span>
             </div>
           </div>
         </div>

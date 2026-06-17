@@ -165,9 +165,137 @@
   transform: rotate(180deg) scale(0.95);
 }
 
+/* Tab Controls Styling */
+.tab-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem auto 0;
+  max-width: 500px;
+  background: var(--bg-secondary);
+  padding: 0.4rem;
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 0.65rem 1.2rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: transparent;
+  color: var(--text-secondary);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tab-btn:hover {
+  color: var(--text-primary);
+}
+
+.tab-btn.active {
+  background: var(--accent-color);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
+}
+
+/* Achievements Section Layout */
+.cert-items-wrapper {
+  margin-top: 2rem;
+}
+
+/* Achievement Card Customization */
+.achievement-card {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  min-height: 240px;
+  cursor: default;
+  position: relative;
+}
+
+.clickable-ach {
+  cursor: pointer;
+}
+
+.clickable-ach:hover {
+  border-color: var(--accent-color);
+  box-shadow: var(--shadow-lg);
+}
+
+.ach-icon-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.ach-icon-badge {
+  color: var(--accent-color);
+  background: rgba(56, 189, 248, 0.08);
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(56, 189, 248, 0.15);
+}
+
+.ach-zoom-hint {
+  color: var(--text-secondary);
+  background: var(--bg-tertiary);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.clickable-ach:hover .ach-zoom-hint {
+  opacity: 1;
+  color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+.ach-details h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+  color: var(--text-primary);
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+}
+
+.ach-provider {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin-bottom: 0.75rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.ach-description {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-family: 'Inter', sans-serif;
+}
+
 @media screen and (max-width: 768px) {
   .certifications-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+  .tab-controls {
+    max-width: 90%;
   }
 }

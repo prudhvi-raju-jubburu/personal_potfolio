@@ -26,39 +26,34 @@ const About = () => {
 
   const skillCategories = [
     {
-      title: 'Frontend',
+      title: 'Programming',
+      icon: <Cpu className="category-icon languages" />,
+      skills: ['C++', 'Python']
+    },
+    {
+      title: 'MERN & Web Tech',
       icon: <Layout className="category-icon frontend" />,
-      skills: ['React.js', 'JavaScript', 'HTML5', 'CSS3']
+      skills: ['HTML', 'CSS', 'JavaScript', 'React.js', 'Node.js', 'Express.js']
     },
     {
-      title: 'Backend',
-      icon: <Terminal className="category-icon backend" />,
-      skills: ['Node.js', 'Express.js', 'Flask', 'REST APIs', 'JWT Auth', 'Postman']
-    },
-    {
-      title: 'Database',
+      title: 'Databases',
       icon: <Database className="category-icon database" />,
       skills: ['MongoDB', 'MySQL']
     },
     {
-      title: 'Programming',
-      icon: <Cpu className="category-icon languages" />,
-      skills: ['C', 'Python', 'C++']
+      title: 'Tools',
+      icon: <Globe className="category-icon tools" />,
+      skills: ['Git', 'GitHub', 'VS Code', 'Postman']
     },
     {
-      title: 'Tools & Deploy',
-      icon: <Globe className="category-icon tools" />,
-      skills: ['Git', 'GitHub', 'VS Code']
+      title: 'Core Concepts',
+      icon: <Code2 className="category-icon backend" />,
+      skills: ['DSA', 'OOPs', 'DBMS']
     },
     {
       title: 'Soft Skills',
       icon: <Users className="category-icon soft-skills" />,
-      skills: ['Communication', 'Collaboration & Management', 'Adaptability', 'Leadership']
-    },
-    {
-      title: 'Interests',
-      icon: <Rocket className="category-icon interests" />,
-      skills: ['Scalable Apps', 'Gen AI / Agents', 'Open Source']
+      skills: ['Teamwork', 'Continuous Learning', 'Collaboration', 'Leadership']
     }
   ];
 
@@ -79,12 +74,12 @@ const About = () => {
       <div className="about-content">
         <motion.section variants={itemVariants} className="about-main card">
           <div className="professional-summary">
-            <h2 className="subheading-gradient">Crafting Digital Excellence</h2>
+            <h2 className="subheading-gradient">Professional Summary</h2>
             <p>
               I’m a <strong>B.Tech Computer Science student</strong> at GMR Institute of Technology and an aspiring <strong>MERN Stack Developer</strong>, passionate about building scalable and high-performance web applications. I focus on creating seamless user experiences by combining efficient backend systems with intuitive frontend design.
             </p>
             <p>
-              Skilled in <strong>MongoDB, Express.js, React.js, Node.js, Python, and Flask</strong>, I emphasize <strong>clean, maintainable code</strong> and real-world problem solving. I continuously explore modern technologies, including <strong>AI-driven applications</strong>, to stay industry-ready.
+              Skilled in <strong>MongoDB, Express.js, React.js, Node.js, and Python</strong>, I emphasize <strong>clean, maintainable code</strong> and real-world problem solving. I continuously explore modern technologies, including <strong>AI-driven applications</strong>, to stay industry-ready.
             </p>
             <p>
               Beyond development, my experience as an <strong>NSS Volunteer</strong> has strengthened my leadership, teamwork, and adaptability, enabling me to contribute effectively to both technical and community-driven projects.
@@ -159,9 +154,9 @@ const About = () => {
             <h2 className="sub-title"><GraduationCap size={24} /> Education</h2>
             <div className="timeline">
               {[
-                { date: '2023 - 2027', degree: 'B.Tech (CSE)', school: 'GMR Institute of Technology', grade: 'CGPA: 9.0' },
-                { date: '2021 - 2023', degree: 'Intermediate (MPC)', school: 'Vidya Vikas Junior College', grade: '9.6 GPA' },
-                { date: '2021', degree: 'Secondary Education', school: 'ZPP High School', grade: '9.7 GPA' }
+                { date: '2023 - 2027', degree: 'B.Tech (CSE)', school: 'GMR Institute of Technology', grade: 'CGPA: 8.9' },
+                { date: '2021 - 2023', degree: 'Intermediate (MPC)', school: 'Vidya Vikas Junior College', grade: 'GPA: 9.6' },
+                { date: '2021', degree: 'Secondary Education', school: 'ZPP High School', grade: 'GPA: 9.7' }
               ].map((edu, idx) => (
                 <div key={idx} className="timeline-item card">
                   <span className="timeline-date">{edu.date}</span>
@@ -178,23 +173,21 @@ const About = () => {
             <div className="experience-list card">
               {[
                 {
-                  role: 'MERN Stack Intern',
-                  company: 'Codec Technologies Pvt. Ltd.',
+                  role: 'MERN Stack Developer Intern',
+                  company: 'Codec Technologies',
                   date: 'Oct 2025',
                   points: [
-                    'Engineered dynamic UI with React.js and state management.',
-                    'Developed secure REST APIs using Node.js and Express.',
-                    'Optimized MongoDB schemas for high-traffic data handling.'
+                    'Learned full-stack web development using the MERN Stack and worked on REST API development and integration.',
+                    'Built and integrated web application features using React.js, Node.js, Express.js, and MongoDB.'
                   ]
                 },
                 {
                   role: 'AI Technologies Intern',
-                  company: 'EdyGrad One Pvt. Ltd.',
+                  company: 'EdyGrad',
                   date: 'June 2025',
                   points: [
-                    'Applied ML models for predictive data analysis.',
-                    'Preprocessed complex datasets for model training.',
-                    'Explored neural networks for real-world automation.'
+                    'Learned Artificial Intelligence and Machine Learning fundamentals, including supervised and unsupervised learning concepts.',
+                    'Gained hands-on experience in Python, data preprocessing, model training, and evaluation techniques.'
                   ]
                 }
               ].map((exp, idx) => (

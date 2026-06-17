@@ -7,7 +7,7 @@ const Resume = () => {
     { 
       name: 'LeetCode', 
       icon: <Code2 size={20} className="profile-icon leetcode" />, 
-      url: 'https://leetcode.com/u/CS23341A05A7/' 
+      url: 'https://leetcode.com/u/Prudhvi_Raju_Jubburu/' 
     },
     { 
       name: 'CodeChef', 
@@ -17,7 +17,7 @@ const Resume = () => {
     { 
       name: 'GeeksforGeeks', 
       icon: <Cpu size={20} className="profile-icon gfg" />, 
-      url: 'https://www.geeksforgeeks.org/profile/jubburuprum7md' 
+      url: 'https://www.geeksforgeeks.org/profile/jubburuprudhviraju' 
     }
   ];
 

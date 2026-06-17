@@ -1,45 +1,76 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Github, Linkedin, MapPin, Send, CheckCircle2, Phone } from 'lucide-react';
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, Github, Linkedin, MapPin, Phone, Send, CheckCircle2, X } from 'lucide-react';
 import './Contact.css';
 
 const Contact = () => {
   const [formStatus, setFormStatus] = useState('idle');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormStatus('sending');
-    setTimeout(() => {
-      setFormStatus('success');
-      e.target.reset();
-      setTimeout(() => setFormStatus('idle'), 6000);
-    }, 1200);
+
+    const formData = new FormData(e.target);
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE";
+    formData.append("access_key", accessKey);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setFormStatus('success');
+        e.target.reset();
+        setTimeout(() => setFormStatus('idle'), 6000);
+      } else {
+        console.error("Web3Forms submission failed:", data);
+        setFormStatus('error');
+      }
+    } catch (error) {
+      console.error("Web3Forms submission error:", error);
+      setFormStatus('error');
+    }
   };
 
   const infoItems = [
     { 
-      icon: <Mail size={22} />, 
+      icon: <Mail size={20} />, 
       title: "Email", 
       value: "jubburuprudhviraju@gmail.com",
-      link: "mailto:jubburuprudhviraju@gmail.com"
+      link: "mailto:jubburuprudhviraju@gmail.com",
+      color: "#ef4444"
     },
     { 
-      icon: <MapPin size={22} />, 
+      icon: <Phone size={20} />, 
+      title: "Phone", 
+      value: "+91 79816 13325",
+      link: "tel:+917981613325",
+      color: "#10b981"
+    },
+    { 
+      icon: <MapPin size={20} />, 
       title: "Location", 
-      value: "Eluru, Andhra Pradesh",
-      link: null
+      value: "Eluru, AP",
+      link: null,
+      color: "#f59e0b"
     },
     { 
-      icon: <Linkedin size={22} />, 
+      icon: <Linkedin size={20} />, 
       title: "LinkedIn", 
       value: "J. Prudhvi Raju",
-      link: "https://www.linkedin.com/in/jubburu-prudhvi-raju-8a6213374/"
+      link: "https://www.linkedin.com/in/jubburu-prudhvi-raju-8a6213374/",
+      color: "#3b82f6"
     },
     { 
-      icon: <Github size={22} />, 
+      icon: <Github size={20} />, 
       title: "GitHub", 
       value: "@prudhvi-raju-jubburu",
-      link: "https://github.com/prudhvi-raju-jubburu"
+      link: "https://github.com/prudhvi-raju-jubburu",
+      color: "#a855f7"
     }
   ];
 
@@ -48,31 +79,33 @@ const Contact = () => {
       className="contact-container"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
     >
       <div className="contact-header">
         <h1 className="section-title">Get In <span className="text-gradient">Touch</span></h1>
         <div className="title-underline"></div>
         <p className="contact-intro">
-          I'm always open to new opportunities, collaborations, or just a friendly hello. 
-          Feel free to reach out using the form or through my social channels!
+          I'm open to internship opportunities or projects. Reach out via direct message or use the form!
         </p>
       </div>
 
       <div className="contact-grid">
         <motion.div 
           className="contact-info-panel"
-          initial={{ opacity: 0, x: -30 }}
+          initial={{ opacity: 0, x: -25 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
           <div className="info-cards-stack">
             {infoItems.map((item, idx) => (
               <motion.div 
                 key={idx} 
                 className="info-card card"
-                whileHover={{ x: 10, borderColor: 'var(--accent-color)' }}
+                whileHover={{ x: 5, borderColor: item.color }}
               >
-                <div className="info-icon-box">{item.icon}</div>
+                <div className="info-icon-box" style={{ color: item.color, backgroundColor: `${item.color}08` }}>
+                  {item.icon}
+                </div>
                 <div className="info-text">
                   <span>{item.title}</span>
                   {item.link ? (
@@ -88,26 +121,39 @@ const Contact = () => {
 
         <motion.div 
           className="contact-form-panel card"
-          initial={{ opacity: 0, x: 30 }}
+          initial={{ opacity: 0, x: 25 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
           <AnimatePresence mode="wait">
             {formStatus === 'success' ? (
               <motion.div 
                 className="success-state"
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
+                exit={{ opacity: 0, scale: 0.9 }}
                 key="success"
               >
-                <div className="success-lottie-mock">
-                  <CheckCircle2 size={80} />
-                </div>
-                <h3>Message Received!</h3>
-                <p>Thanks for reaching out, Prudhvi will get back to you shortly.</p>
-                <button className="btn btn-outline" onClick={() => setFormStatus('idle')}>
+                <CheckCircle2 size={50} className="success-icon" />
+                <h3>Sent Successfully!</h3>
+                <p>Thanks for writing. I'll get back to you shortly.</p>
+                <button className="btn btn-outline btn-sm" onClick={() => setFormStatus('idle')}>
                   Send Another
+                </button>
+              </motion.div>
+            ) : formStatus === 'error' ? (
+              <motion.div 
+                className="success-state"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                key="error"
+              >
+                <X size={50} color="#ef4444" style={{ filter: "drop-shadow(0 0 8px rgba(239, 68, 68, 0.3))" }} />
+                <h3>Submission Failed</h3>
+                <p>Could not send message. Please email me directly at:<br /><strong>jubburuprudhviraju@gmail.com</strong></p>
+                <button className="btn btn-outline btn-sm" onClick={() => setFormStatus('idle')}>
+                  Try Again
                 </button>
               </motion.div>
             ) : (
@@ -119,34 +165,28 @@ const Contact = () => {
                 exit={{ opacity: 0 }}
                 key="form"
               >
-                <div className="form-row">
-                  <div className="input-group">
-                    <label>Full Name</label>
-                    <input type="text" placeholder="John Doe" required />
-                  </div>
-                  <div className="input-group">
-                    <label>Email Address</label>
-                    <input type="email" placeholder="john@example.com" required />
-                  </div>
+                <div className="form-group-compact">
+                  <label>Full Name</label>
+                  <input type="text" name="name" placeholder="Your Name" required />
                 </div>
-                <div className="input-group">
-                  <label>Subject</label>
-                  <input type="text" placeholder="Project Inquiry" required />
+                <div className="form-group-compact">
+                  <label>Email Address</label>
+                  <input type="email" name="email" placeholder="yourname@example.com" required />
                 </div>
-                <div className="input-group">
+                <div className="form-group-compact">
                   <label>Message</label>
-                  <textarea placeholder="How can I help you today?" rows="5" required></textarea>
+                  <textarea name="message" placeholder="Write your message here..." rows="3" required></textarea>
                 </div>
                 <button 
                   type="submit" 
-                  className={`btn btn-primary submit-btn ${formStatus === 'sending' ? 'loading' : ''}`}
+                  className={`btn btn-primary submit-btn-compact ${formStatus === 'sending' ? 'loading' : ''}`}
                   disabled={formStatus === 'sending'}
                 >
                   {formStatus === 'sending' ? (
                     <span className="loader"></span>
                   ) : (
                     <>
-                      <Send size={18} />
+                      <Send size={15} />
                       <span>Send Message</span>
                     </>
                   )}
