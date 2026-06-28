@@ -2,6 +2,60 @@
   padding-top: 1rem;
   max-width: 1400px;
   margin: 0 auto;
+  position: relative;
+}
+
+.reveal-wrapper {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+/* Floating Glow Circles background */
+.hero-glow-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.glow-circle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.12;
+}
+
+.glow-1 {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, var(--accent-color) 0%, transparent 80%);
+  top: -10%;
+  left: -10%;
+  animation: float-1 25s infinite alternate ease-in-out;
+}
+
+.glow-2 {
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, #a855f7 0%, transparent 80%);
+  bottom: 20%;
+  right: -10%;
+  animation: float-2 30s infinite alternate ease-in-out;
+}
+
+@keyframes float-1 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(60px, 100px) scale(1.1); }
+}
+
+@keyframes float-2 {
+  0% { transform: translate(0, 0) scale(1.15); }
+  100% { transform: translate(-100px, -60px) scale(0.9); }
 }
 
 /* Hero Section */
@@ -12,6 +66,7 @@
   min-height: 80vh;
   gap: 4rem;
   padding: 2rem 0;
+  position: relative;
 }
 
 .hero-content {
@@ -70,6 +125,8 @@
   display: flex;
   gap: 1.25rem;
   margin-bottom: 3rem;
+  position: relative;
+  z-index: 10;
 }
 
 .social-icon {
@@ -97,6 +154,8 @@
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 10;
 }
 
 .arrow-icon {

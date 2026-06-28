@@ -8,12 +8,12 @@ const Certifications = () => {
   const [activeTab, setActiveTab] = useState('all');
 
   const certifications = [
-    { title: 'Front End Web Developer', provider: 'Infosys Springboard', img: '/certifications/frontend.png', category: 'Web' },
-    { title: 'MERN Stack Developer', provider: 'Codec Technologies', img: '/certifications/mernintern.png', category: 'Stack' },
-    { title: 'Introduction to MERN Stack', provider: 'Simplilearn SkillUp', img: '/certifications/mern.png', category: 'Stack' },
-    { title: 'Problem Solving', provider: 'HackerRank', img: '/certifications/problem.png', category: 'Core' },
-    { title: 'Javascript', provider: 'NPTEL', img: '/certifications/javascript.png', category: 'Language' },
+    { title: 'Frontend Developer', provider: 'Infosys Springboard', img: '/certifications/frontend.png', category: 'Web' },
+    { title: 'JavaScript', provider: 'Infosys Springboard', img: '/certifications/javascript.png', category: 'Language' },
+    { title: 'Introduction to MERN Stack', provider: 'Simplilearn', img: '/certifications/mern.png', category: 'Stack' },
     { title: 'Joy of Computing in Python', provider: 'NPTEL', img: '/certifications/python.png', category: 'Language' },
+    { title: 'Problem Solving', provider: 'HackerRank', img: '/certifications/problem.png', category: 'Core' },
+    { title: 'MERN Stack Developer', provider: 'Codec Technologies', img: '/certifications/mernintern.png', category: 'Stack' },
     { title: 'Javascript Essentials', provider: 'L&T Edu Tech', img: '/certifications/L&T javascript.png', category: 'Web' },
     { title: 'Web Development', provider: 'SoloLearn', img: '/certifications/websololearn.png', category: 'Web' },
     { title: 'NSS Volunteer Certificate', provider: 'National Service Scheme', img: '/certifications/nss.jpg', category: 'Leadership' },
@@ -21,22 +21,29 @@ const Certifications = () => {
 
   const achievements = [
     {
-      title: 'Solved 250+ DSA Problems',
-      provider: 'LeetCode / GeekforGeeks / CodeChef',
-      detail: 'Solved over 250 data structures and algorithms questions with a 50+ day active coding streak.',
+      title: 'Solved 300+ DSA Problems',
+      provider: 'LeetCode / GeeksforGeeks / CodeChef',
+      detail: 'Solved over 300 data structures and algorithms questions with a consistent coding streak.',
       icon: <Code2 size={24} />,
       img: '/certifications/problem.png',
       category: 'Coding'
     },
     {
-      title: 'NSF x Adobe Mentorship Program',
+      title: '2-Star Coder on CodeChef',
+      provider: 'CodeChef',
+      detail: 'Earned 2-star rating on CodeChef competitive programming platform, showcasing algorithmic and problem-solving skills.',
+      icon: <Award size={24} />,
+      category: 'Coding'
+    },
+    {
+      title: 'Selected for NSF × Adobe Mentorship Program',
       provider: 'Adobe & National Science Foundation',
-      detail: 'Selected for the prestigious NSF x Adobe Mentorship Program, working with industry mentors.',
+      detail: 'Selected for the prestigious NSF × Adobe Mentorship Program, working with industry mentors.',
       icon: <Sparkles size={24} />,
       category: 'Mentorship'
     },
     {
-      title: 'First Place - Vibe with Data',
+      title: 'First Place – Vibe with Data',
       provider: 'STEPCONE 2026',
       detail: 'Won 1st Place in the Vibe with Data Hackathon, showcasing advanced data application development.',
       icon: <Award size={24} />,

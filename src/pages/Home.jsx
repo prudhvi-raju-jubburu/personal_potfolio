@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { 
-  FileText, Github, Linkedin, Mail, Code2, 
+  FileText, Github, Linkedin, Mail, Code2, Cpu, Terminal,
   Zap, CheckCircle2, Users, Rocket, ArrowRight, ChevronDown
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
@@ -8,10 +8,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import './Home.css';
 
 const roles = [
-  "Computer Science Student @ GMRIT",
+  "Software Engineer",
   "MERN Stack Developer",
-  "AI Technologies Intern",
-  "Problem Solver & Tech Enthusiast"
+  "AI Developer / Intern",
+  "Computer Science Student"
 ];
 
 const WhyHireMe = () => {
@@ -106,6 +106,10 @@ const Home = () => {
 
   return (
     <div className="home-container">
+      <div className="hero-glow-container">
+        <div className="glow-circle glow-1"></div>
+        <div className="glow-circle glow-2"></div>
+      </div>
       <section className="hero-section">
         <motion.div 
           className="hero-content"
@@ -113,22 +117,27 @@ const Home = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <motion.h3 
-            className="hero-greeting"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            Hi there, I'm
-          </motion.h3>
-          <motion.h1 
-            className="hero-name text-gradient"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-          >
-            J. Prudhvi Raju
-          </motion.h1>
+          <div className="reveal-wrapper">
+            <motion.h3 
+              className="hero-greeting"
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+            >
+              Hi there, I'm
+            </motion.h3>
+          </div>
+          <br />
+          <div className="reveal-wrapper">
+            <motion.h1 
+              className="hero-name text-gradient"
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            >
+              J. Prudhvi Raju
+            </motion.h1>
+          </div>
           <motion.h2 
             className="hero-role"
             initial={{ opacity: 0 }}
@@ -144,7 +153,7 @@ const Home = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
           >
-            Computer Science undergraduate skilled in building responsive full-stack applications using the MERN stack, database systems, and AI-powered solutions.
+            Computer Science undergraduate with internship experience in Full-Stack and AI development, passionate about building scalable web solutions.
           </motion.p>
 
           <motion.div 
@@ -156,7 +165,9 @@ const Home = () => {
             {[
               { icon: <Github size={22} />, url: "https://github.com/prudhvi-raju-jubburu", title: "GitHub" },
               { icon: <Linkedin size={22} />, url: "https://www.linkedin.com/in/jubburu-prudhvi-raju-8a6213374/", title: "LinkedIn" },
-              { icon: <Code2 size={22} />, url: "https://leetcode.com/u/CS23341A05A7/", title: "LeetCode" },
+              { icon: <Code2 size={22} />, url: "https://leetcode.com/u/Prudhvi_Raju_Jubburu/", title: "LeetCode" },
+              { icon: <Cpu size={22} />, url: "https://www.geeksforgeeks.org/profile/jubburuprudhviraju", title: "GeeksforGeeks" },
+              { icon: <Terminal size={22} />, url: "https://www.codechef.com/users/cs23341a05a7", title: "CodeChef" },
               { icon: <Mail size={22} />, url: "mailto:jubburuprudhviraju@gmail.com", title: "Email" }
             ].map((social, idx) => (
               <a key={idx} href={social.url} target="_blank" rel="noopener noreferrer" className="social-icon" title={social.title}>
@@ -199,21 +210,21 @@ const Home = () => {
             <div className="profile-img-glow"></div>
           </div>
         </motion.div>
-      </section>
 
-      <AnimatePresence>
-        {showScroll && (
-          <motion.div 
-            className="scroll-indicator"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
-          >
-            <ChevronDown size={32} />
-          </motion.div>
-        )}
-      </AnimatePresence>
+        <AnimatePresence>
+          {showScroll && (
+            <motion.div 
+              className="scroll-indicator"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+            >
+              <ChevronDown size={32} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </section>
 
       <WhyHireMe />
     </div>

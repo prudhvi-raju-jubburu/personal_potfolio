@@ -21,7 +21,7 @@ const Footer = () => {
               <a href="https://www.linkedin.com/in/jubburu-prudhvi-raju-8a6213374/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <Linkedin size={20} />
               </a>
-              <a href="https://leetcode.com/u/CS23341A05A7/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
+              <a href="https://leetcode.com/u/Prudhvi_Raju_Jubburu/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
                 <Code2 size={20} />
               </a>
               <a href="mailto:jubburuprudhviraju@gmail.com" aria-label="Email">

@@ -6,8 +6,8 @@ const Projects = () => {
   const projectsData = [
     {
       id: 1,
-      title: 'Visit AP - Tourism Website',
-      description: 'A tourism platform that helps users explore tourist destinations across Andhra Pradesh with location-based information and travel guidance. Developed REST APIs and integrated MongoDB for managing destinations, reviews, ratings, and dynamic content.',
+      title: 'Visit AP – Full-Stack Tourism Platform',
+      description: 'Designed and developed a responsive tourism platform for exploring destinations across Andhra Pradesh. Implemented destination management, reviews, ratings, and REST API integration using MongoDB.',
       techStack: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
       githubLink: 'https://github.com/prudhvi-raju-jubburu/visitap',
       liveLink: 'https://visitap.vercel.app/',
@@ -15,17 +15,18 @@ const Projects = () => {
     },
     {
       id: 2,
-      title: 'FarmerDirect - Farmer to Consumer Platform',
-      description: 'A digital marketplace connecting farmers directly with consumers, eliminating intermediaries and improving market accessibility. Implemented JWT authentication, product management, order processing, reviews, and location-based product discovery.',
+      title: 'FarmerDirect – Farmer-to-Consumer Marketplace',
+      description: 'Developed a farmer-to-consumer marketplace connecting farmers directly with consumers, eliminating intermediaries. Implemented JWT authentication, product management, order processing, and review modules.',
       techStack: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
       githubLink: 'https://github.com/LokeshRaivada/Farmer-to-Consumer-Project',
+      liveLink: 'https://farmerdirect.vercel.app/',
       image: '/projects/farmerdirect.png'
     },
     {
       id: 3,
-      title: 'Buy Smart - Recommendation System',
-      description: 'A product recommendation system that helps users discover relevant products from multiple e-commerce platforms. Applied filtering techniques and web scraping to generate personalized recommendations using user behavior and product data.',
-      techStack: ['React.js', 'JavaScript', 'Python', 'Web Scraping'],
+      title: 'Buy Smart – Product Recommendation System',
+      description: 'Developed a recommendation system that provides personalized product recommendations based on user preferences. Integrated web scraping and filtering techniques for product aggregation.',
+      techStack: ['React.js', 'Python', 'JavaScript', 'Web Scraping'],
       githubLink: 'https://github.com/prudhvi-raju-jubburu/BuySmart',
       liveLink: 'https://buysmart-ai.vercel.app/',
       image: '/projects/buy-smart.png'
