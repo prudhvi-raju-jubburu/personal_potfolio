@@ -153,7 +153,7 @@ const Home = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
           >
-            Computer Science undergraduate with internship experience in Full-Stack and AI development, passionate about building scalable web solutions.
+            Computer Science undergraduate with internship and project experience in Full-Stack Development, focused on building scalable web applications and solving real-world problems.
           </motion.p>
 
           <motion.div 

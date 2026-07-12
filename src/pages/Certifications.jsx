@@ -8,6 +8,7 @@ const Certifications = () => {
   const [activeTab, setActiveTab] = useState('all');
 
   const certifications = [
+    { title: 'TCS CodeVita Season 13 Rank Certificate', provider: 'Tata Consultancy Services', img: '/certifications/codevita.png', category: 'Coding' },
     { title: 'Frontend Developer', provider: 'Infosys Springboard', img: '/certifications/frontend.png', category: 'Web' },
     { title: 'JavaScript', provider: 'Infosys Springboard', img: '/certifications/javascript.png', category: 'Language' },
     { title: 'Introduction to MERN Stack', provider: 'Simplilearn', img: '/certifications/mern.png', category: 'Stack' },
@@ -20,6 +21,14 @@ const Certifications = () => {
   ];
 
   const achievements = [
+    {
+      title: 'Global Rank 17600 – TCS CodeVita Season 13',
+      provider: 'Tata Consultancy Services',
+      detail: 'Secured a global rank of 17,600 in TCS CodeVita Season 13, demonstrating competitive programming proficiency.',
+      icon: <Award size={24} />,
+      img: '/certifications/codevita.png',
+      category: 'Coding'
+    },
     {
       title: 'Solved 300+ DSA Problems',
       provider: 'LeetCode / GeeksforGeeks / CodeChef',
