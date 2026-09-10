@@ -1,30 +1,27 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ZoomIn, Sparkles, Award, Code2, Users, FileText } from 'lucide-react';
+import { X, ZoomIn, Sparkles, Award, Code2, Users } from 'lucide-react';
 import './Certifications.css';
 
 const Certifications = () => {
   const [selectedImg, setSelectedImg] = useState(null);
   const [activeTab, setActiveTab] = useState('all');
 
+  // Curated list of verified technical certificates
   const certifications = [
-    { title: 'TCS CodeVita Season 13 Rank Certificate', provider: 'Tata Consultancy Services', img: '/certifications/codevita.png', category: 'Coding' },
-    { title: 'Frontend Developer', provider: 'Infosys Springboard', img: '/certifications/frontend.png', category: 'Web' },
-    { title: 'JavaScript', provider: 'Infosys Springboard', img: '/certifications/javascript.png', category: 'Language' },
-    { title: 'Introduction to MERN Stack', provider: 'Simplilearn', img: '/certifications/mern.png', category: 'Stack' },
-    { title: 'Joy of Computing in Python', provider: 'NPTEL', img: '/certifications/python.png', category: 'Language' },
-    { title: 'Problem Solving', provider: 'HackerRank', img: '/certifications/problem.png', category: 'Core' },
-    { title: 'MERN Stack Developer', provider: 'Codec Technologies', img: '/certifications/mernintern.png', category: 'Stack' },
-    { title: 'Javascript Essentials', provider: 'L&T Edu Tech', img: '/certifications/L&T javascript.png', category: 'Web' },
-    { title: 'Web Development', provider: 'SoloLearn', img: '/certifications/websololearn.png', category: 'Web' },
-    { title: 'NSS Volunteer Certificate', provider: 'National Service Scheme', img: '/certifications/nss.jpg', category: 'Leadership' },
+    { title: 'TCS CodeVita Season 13 Rank Certificate', provider: 'Tata Consultancy Services', img: '/certifications/codevita.png', category: 'Competitive Coding' },
+    { title: 'MERN Stack Developer', provider: 'Codec Technologies', img: '/certifications/mernintern.png', category: 'Full Stack' },
+    { title: 'Frontend Developer', provider: 'Infosys Springboard', img: '/certifications/frontend.png', category: 'Web Engineering' },
+    { title: 'Introduction to MERN Stack', provider: 'Simplilearn', img: '/certifications/mern.png', category: 'Full Stack' },
+    { title: 'Joy of Computing in Python', provider: 'NPTEL', img: '/certifications/python.png', category: 'Python / ML' },
+    { title: 'Problem Solving', provider: 'HackerRank', img: '/certifications/problem.png', category: 'Algorithms' },
   ];
 
   const achievements = [
     {
       title: 'Global Rank 17600 – TCS CodeVita Season 13',
       provider: 'Tata Consultancy Services',
-      detail: 'Secured a global rank of 17,600 in TCS CodeVita Season 13, demonstrating competitive programming proficiency.',
+      detail: 'Secured a global rank of 17,600 in TCS CodeVita Season 13 competitive programming event.',
       icon: <Award size={24} />,
       img: '/certifications/codevita.png',
       category: 'Coding'
@@ -40,21 +37,21 @@ const Certifications = () => {
     {
       title: '2-Star Coder on CodeChef',
       provider: 'CodeChef',
-      detail: 'Earned 2-star rating on CodeChef competitive programming platform, showcasing algorithmic and problem-solving skills.',
+      detail: 'Earned 2-star rating on CodeChef competitive programming platform.',
       icon: <Award size={24} />,
       category: 'Coding'
     },
     {
       title: 'Selected for NSF × Adobe Mentorship Program',
       provider: 'Adobe & National Science Foundation',
-      detail: 'Selected for the prestigious NSF × Adobe Mentorship Program, working with industry mentors.',
+      detail: 'Selected for the NSF × Adobe Mentorship Program, collaborating with industry engineering mentors.',
       icon: <Sparkles size={24} />,
       category: 'Mentorship'
     },
     {
       title: 'First Place – Vibe with Data',
       provider: 'STEPCONE 2026',
-      detail: 'Won 1st Place in the Vibe with Data Hackathon, showcasing advanced data application development.',
+      detail: 'Won 1st Place in the Vibe with Data Hackathon, presenting data application solutions.',
       icon: <Award size={24} />,
       img: '/certifications/vibe.jpeg',
       category: 'Hackathon'
@@ -62,7 +59,7 @@ const Certifications = () => {
     {
       title: 'Active NSS Volunteer',
       provider: 'National Service Scheme',
-      detail: 'Organized community health drives and educational camps, building leadership and teamwork.',
+      detail: 'Organized community health drives and educational camps, cultivating teamwork and leadership.',
       icon: <Users size={24} />,
       img: '/certifications/nss.jpg',
       category: 'Social Work'
@@ -71,13 +68,22 @@ const Certifications = () => {
 
   const openModal = (imgSrc) => {
     setSelectedImg(imgSrc);
-    document.body.style.overflow = 'hidden';
   };
 
   const closeModal = () => {
     setSelectedImg(null);
-    document.body.style.overflow = 'auto';
   };
+
+  useEffect(() => {
+    if (selectedImg) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [selectedImg]);
 
   useEffect(() => {
     const handleEsc = (e) => {
@@ -90,36 +96,38 @@ const Certifications = () => {
   return (
     <motion.div 
       className="certifications-page-container"
+      id="certifications"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      transition={{ duration: 0.4 }}
     >
-      <div className="certifications-header">
+      <div className="section-header">
         <h1 className="section-title">Credentials & <span className="text-gradient">Achievements</span></h1>
         <div className="title-underline"></div>
-        <p className="certifications-intro">
-          A collection of my professional certificates and key milestones that validate my engineering skills, problem-solving, and leadership qualities.
+        <p className="section-subtitle">
+          Curated technical certificates, global competitive ranks, and engineering accomplishments validating full-stack engineering proficiency.
         </p>
 
         {/* Tab Controls */}
-        <div className="tab-controls">
+        <div className="cert-tab-controls">
           <button 
-            className={`tab-btn ${activeTab === 'all' ? 'active' : ''}`}
+            className={`cert-tab-btn ${activeTab === 'all' ? 'active' : ''}`}
             onClick={() => setActiveTab('all')}
           >
             Show All
           </button>
           <button 
-            className={`tab-btn ${activeTab === 'certifications' ? 'active' : ''}`}
+            className={`cert-tab-btn ${activeTab === 'certifications' ? 'active' : ''}`}
             onClick={() => setActiveTab('certifications')}
           >
-            Certifications
+            Certifications ({certifications.length})
           </button>
           <button 
-            className={`tab-btn ${activeTab === 'achievements' ? 'active' : ''}`}
+            className={`cert-tab-btn ${activeTab === 'achievements' ? 'active' : ''}`}
             onClick={() => setActiveTab('achievements')}
           >
-            Achievements
+            Achievements ({achievements.length})
           </button>
         </div>
       </div>
@@ -141,17 +149,24 @@ const Certifications = () => {
                 <motion.div 
                   key={`cert-${index}`}
                   className="certification-card card"
-                  whileHover={{ y: -8 }}
+                  whileHover={{ y: -6 }}
                   onClick={() => openModal(cert.img)}
                 >
                   <div className="cert-image-container">
-                    <img src={cert.img} alt={cert.title} className="cert-img" onError={(e) => e.target.src = 'https://via.placeholder.com/300x200?text=Certificate'} />
+                    <img 
+                      src={cert.img} 
+                      alt={cert.title} 
+                      className="cert-img" 
+                      loading="lazy"
+                      onError={(e) => e.target.src = 'https://via.placeholder.com/340x220?text=Certificate'} 
+                    />
                     <div className="cert-overlay">
-                      <ZoomIn size={28} color="white" />
+                      <ZoomIn size={26} color="white" />
+                      <span>Enlarge Certificate</span>
                     </div>
                   </div>
                   <div className="cert-details">
-                    <span className="cert-category">{cert.category}</span>
+                    <span className="cert-category-badge">{cert.category}</span>
                     <h3>{cert.title}</h3>
                     <p>{cert.provider}</p>
                   </div>
@@ -165,7 +180,7 @@ const Certifications = () => {
                 <motion.div 
                   key={`ach-${index}`}
                   className={`certification-card card achievement-card ${ach.img ? 'clickable-ach' : ''}`}
-                  whileHover={{ y: -8 }}
+                  whileHover={{ y: -6 }}
                   onClick={ach.img ? () => openModal(ach.img) : undefined}
                 >
                   <div className="ach-icon-container">
@@ -179,7 +194,7 @@ const Certifications = () => {
                     )}
                   </div>
                   <div className="cert-details ach-details">
-                    <span className="cert-category ach-category">{ach.category}</span>
+                    <span className="cert-category-badge ach-cat">{ach.category}</span>
                     <h3>{ach.title}</h3>
                     <p className="ach-provider">{ach.provider}</p>
                     <p className="ach-description">{ach.detail}</p>
@@ -191,6 +206,7 @@ const Certifications = () => {
         </AnimatePresence>
       </div>
 
+      {/* Enlarged Modal */}
       <AnimatePresence>
         {selectedImg && (
           <motion.div 
@@ -210,7 +226,7 @@ const Certifications = () => {
               <button className="modal-close-btn" onClick={closeModal} aria-label="Close modal">
                 <X size={24} />
               </button>
-              <img src={selectedImg} alt="Certificate Enlarged" className="enlarged-certificate" />
+              <img src={selectedImg} alt="Certificate Enlarged Preview" className="enlarged-certificate" />
             </motion.div>
           </motion.div>
         )}

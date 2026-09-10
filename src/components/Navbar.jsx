@@ -1,18 +1,18 @@
-import { NavLink } from 'react-router-dom';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { NavLink, useLocation } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { useTheme } from '../context/ThemeContext';
 import './Navbar.css';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { isDarkMode, toggleTheme } = useTheme();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 40);
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -20,57 +20,63 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
-  const navLinks = [
-    { path: '/', label: 'Home' },
-    { path: '/about', label: 'About' },
-    { path: '/certifications', label: 'Certifications' },
-    { path: '/projects', label: 'Projects' },
-    { path: '/resume', label: 'Resume' },
-    { path: '/contact', label: 'Contact' },
+  const navItems = [
+    { label: 'Home', path: '/' },
+    { label: 'About', path: '/about' },
+    { label: 'Projects', path: '/projects' },
+    { label: 'Certifications', path: '/certifications' },
+    { label: 'Resume', path: '/resume' },
+    { label: 'Contact', path: '/contact' },
   ];
 
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
+        {/* Logo Branding */}
         <NavLink to="/" className="navbar-logo" onClick={closeMenu}>
-          <div className="nav-logo-wrapper">
+          <div className="nav-logo-avatar-wrap">
             <img 
               src="/profile.jpeg" 
-              alt="J. Prudhvi Raju" 
+              alt="Jubburu Prudhvi Raju" 
               className="nav-logo-img" 
               onError={(e) => { e.target.src = 'https://via.placeholder.com/80?text=PR'; }}
             />
           </div>
-          <span className="logo-text">J. Prudhvi <span className="text-gradient">Raju.</span></span>
+          <span className="logo-text">
+            J. Prudhvi <span className="text-gradient">Raju</span>
+          </span>
         </NavLink>
-        
-        <div className="nav-content">
+
+        {/* Desktop & Mobile Navigation Content */}
+        <div className="nav-right-content">
           <ul className={`nav-menu ${isOpen ? 'active' : ''}`}>
-            {navLinks.map((link) => (
-              <li className="nav-item" key={link.path}>
-                <NavLink 
-                  to={link.path} 
-                  className={({ isActive }) => `nav-links ${isActive ? 'active' : ''}`}
-                  onClick={closeMenu}
-                >
-                  {link.label}
-                </NavLink>
-              </li>
-            ))}
+            {navItems.map((item) => {
+              const isCurrentRoute = location.pathname === item.path;
+
+              return (
+                <li className="nav-item" key={item.label}>
+                  <NavLink
+                    to={item.path}
+                    className={({ isActive }) => `nav-link-btn ${isActive ? 'active' : ''}`}
+                    onClick={closeMenu}
+                  >
+                    {item.label}
+                    {isCurrentRoute && <span className="nav-active-dot" />}
+                  </NavLink>
+                </li>
+              );
+            })}
           </ul>
 
+          {/* Mobile Menu Trigger */}
           <div className="nav-controls">
             <button 
-              className="theme-toggle" 
-              onClick={toggleTheme}
-              aria-label="Toggle theme"
+              className="mobile-menu-btn" 
+              onClick={toggleMenu}
+              aria-label="Toggle Navigation Menu"
             >
-              {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
-
-            <div className="menu-icon" onClick={toggleMenu}>
               {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </div>
+            </button>
           </div>
         </div>
       </div>
