@@ -5,147 +5,94 @@ const Hero3DCanvas = () => {
   const mountRef = useRef(null);
 
   useEffect(() => {
-    const currentRef = mountRef.current;
-    if (!currentRef) return;
+    const el = mountRef.current;
+    if (!el) return undefined;
 
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isMobile = window.innerWidth < 768;
-
-    const width = currentRef.clientWidth || 500;
-    const height = currentRef.clientHeight || 500;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const lowPower = navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4;
+    const width = el.clientWidth || 480;
+    const height = el.clientHeight || 480;
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-    camera.position.z = isMobile ? 6 : 5;
+    const camera = new THREE.PerspectiveCamera(42, width / height, 0.1, 100);
+    camera.position.z = 5.2;
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: !lowPower });
     renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    currentRef.appendChild(renderer.domElement);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, lowPower ? 1 : 1.6));
+    el.appendChild(renderer.domElement);
 
-    const mainGroup = new THREE.Group();
-    scene.add(mainGroup);
+    const group = new THREE.Group();
+    scene.add(group);
 
-    // 1. Primary Subtle Abstract Glass Torus
-    const torusGeo = new THREE.TorusGeometry(1.6, 0.22, 16, 100);
-    const glassMat = new THREE.MeshPhysicalMaterial({
-      color: 0x38bdf8,
-      roughness: 0.1,
-      metalness: 0.1,
-      transmission: 0.85,
-      transparent: true,
-      opacity: 0.22,
-      ior: 1.4,
-      wireframe: false,
-    });
-    const torusMesh = new THREE.Mesh(torusGeo, glassMat);
-    torusMesh.rotation.x = Math.PI / 4;
-    mainGroup.add(torusMesh);
-
-    // 2. Secondary Floating Ring Accent
-    const ringGeo = new THREE.TorusGeometry(2.1, 0.04, 16, 80);
-    const ringMat = new THREE.MeshBasicMaterial({
-      color: 0xf97316,
-      transparent: true,
-      opacity: 0.18,
+    const geo = new THREE.IcosahedronGeometry(1.55, 1);
+    const mat = new THREE.MeshBasicMaterial({
+      color: 0x7ec8e3,
       wireframe: true,
+      transparent: true,
+      opacity: 0.28,
     });
-    const ringMesh = new THREE.Mesh(ringGeo, ringMat);
-    ringMesh.rotation.y = Math.PI / 3;
-    mainGroup.add(ringMesh);
+    const mesh = new THREE.Mesh(geo, mat);
+    group.add(mesh);
 
-    // Subtle Ambient Lights
-    scene.add(new THREE.AmbientLight(0xffffff, 0.7));
+    const ring = new THREE.Mesh(
+      new THREE.TorusGeometry(2.15, 0.012, 8, 80),
+      new THREE.MeshBasicMaterial({ color: 0xe8a06a, transparent: true, opacity: 0.35 })
+    );
+    ring.rotation.x = Math.PI / 2.6;
+    group.add(ring);
 
-    const light1 = new THREE.PointLight(0x38bdf8, 1.8, 30);
-    light1.position.set(4, 4, 4);
-    scene.add(light1);
+    scene.add(new THREE.AmbientLight(0xffffff, 0.8));
 
-    const light2 = new THREE.PointLight(0xf97316, 1.5, 30);
-    light2.position.set(-4, -4, 2);
-    scene.add(light2);
-
-    // Mouse Parallax Lerping
     let mouseX = 0;
     let mouseY = 0;
-    let targetX = 0;
-    let targetY = 0;
-
-    const handleMouseMove = (e) => {
-      if (prefersReducedMotion) return;
-      const rect = currentRef.getBoundingClientRect();
-      mouseX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
-      mouseY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+    const onMove = (e) => {
+      if (reduced) return;
+      const rect = el.getBoundingClientRect();
+      mouseX = ((e.clientX - rect.left) / rect.width - 0.5) * 0.6;
+      mouseY = ((e.clientY - rect.top) / rect.height - 0.5) * 0.6;
     };
+    window.addEventListener('mousemove', onMove);
 
-    window.addEventListener('mousemove', handleMouseMove);
-
-    const handleResize = () => {
-      if (!currentRef) return;
-      const newW = currentRef.clientWidth;
-      const newH = currentRef.clientHeight;
-      camera.aspect = newW / newH;
+    const onResize = () => {
+      const w = el.clientWidth;
+      const h = el.clientHeight;
+      camera.aspect = w / h;
       camera.updateProjectionMatrix();
-      renderer.setSize(newW, newH);
+      renderer.setSize(w, h);
     };
+    window.addEventListener('resize', onResize);
 
-    window.addEventListener('resize', handleResize);
-
-    let animationFrameId;
+    let frame;
     const clock = new THREE.Clock();
-
-    const animate = () => {
-      animationFrameId = requestAnimationFrame(animate);
-      const elapsedTime = clock.getElapsedTime();
-
-      if (!prefersReducedMotion) {
-        // Slow subtle rotation
-        torusMesh.rotation.z = elapsedTime * 0.12;
-        ringMesh.rotation.z = -elapsedTime * 0.08;
-
-        targetX += (mouseX - targetX) * 0.04;
-        targetY += (mouseY - targetY) * 0.04;
-
-        mainGroup.rotation.y = targetX * 0.35;
-        mainGroup.rotation.x = targetY * 0.35;
+    const tick = () => {
+      frame = requestAnimationFrame(tick);
+      const t = clock.getElapsedTime();
+      if (!reduced) {
+        mesh.rotation.y = t * 0.12;
+        mesh.rotation.x = t * 0.05;
+        ring.rotation.z = -t * 0.08;
+        group.rotation.y += (mouseX - group.rotation.y) * 0.04;
+        group.rotation.x += (mouseY - group.rotation.x) * 0.04;
       }
-
       renderer.render(scene, camera);
     };
-
-    animate();
+    tick();
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('resize', handleResize);
-      if (currentRef && renderer.domElement && renderer.domElement.parentNode === currentRef) {
-        currentRef.removeChild(renderer.domElement);
-      }
-      torusGeo.dispose();
-      glassMat.dispose();
-      ringGeo.dispose();
-      ringMat.dispose();
+      cancelAnimationFrame(frame);
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('resize', onResize);
+      geo.dispose();
+      mat.dispose();
+      ring.geometry.dispose();
+      ring.material.dispose();
       renderer.dispose();
+      if (renderer.domElement.parentNode === el) el.removeChild(renderer.domElement);
     };
   }, []);
 
-  return (
-    <div
-      ref={mountRef}
-      className="hero-3d-canvas-wrapper"
-      style={{
-        position: 'absolute',
-        inset: 0,
-        width: '100%',
-        height: '100%',
-        pointerEvents: 'none',
-        zIndex: 0,
-        opacity: 0.85
-      }}
-      aria-hidden="true"
-    />
-  );
+  return <div ref={mountRef} className="hero-3d-canvas-wrapper" aria-hidden="true" />;
 };
 
 export default Hero3DCanvas;

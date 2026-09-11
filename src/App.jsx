@@ -8,37 +8,37 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Certifications from './pages/Certifications';
 import Projects from './pages/Projects';
+import ProjectPage from './pages/ProjectPage';
 import Resume from './pages/Resume';
 import Contact from './pages/Contact';
 
-const PageTransition = ({ children }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -15 }}
-      transition={{ duration: 0.35, ease: 'easeInOut' }}
-      style={{ width: '100%' }}
-    >
-      {children}
-    </motion.div>
-  );
-};
+const PageTransition = ({ children }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.28, ease: 'easeOut' }}
+  >
+    {children}
+  </motion.div>
+);
 
 function App() {
   const location = useLocation();
 
   return (
     <div className="app-container">
+      <a className="skip-link" href="#main">Skip to content</a>
       <ScrollProgressBar />
       <Navbar />
-      <main className="main-content">
+      <main id="main" className="main-content">
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<PageTransition><Home /></PageTransition>} />
             <Route path="/about" element={<PageTransition><About /></PageTransition>} />
             <Route path="/certifications" element={<PageTransition><Certifications /></PageTransition>} />
             <Route path="/projects" element={<PageTransition><Projects /></PageTransition>} />
+            <Route path="/projects/:slug" element={<PageTransition><ProjectPage /></PageTransition>} />
             <Route path="/resume" element={<PageTransition><Resume /></PageTransition>} />
             <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
           </Routes>

@@ -5,14 +5,21 @@ import './ScrollToTop.css';
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    const toggleVisibility = () => {
-      setIsVisible(window.scrollY > 300);
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const currentScroll = window.scrollY;
+      setIsVisible(currentScroll > 250);
+      if (totalHeight > 0) {
+        setScrollProgress(Math.min(100, Math.max(0, (currentScroll / totalHeight) * 100)));
+      }
     };
 
-    window.addEventListener('scroll', toggleVisibility);
-    return () => window.removeEventListener('scroll', toggleVisibility);
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToTop = () => {
@@ -22,21 +29,52 @@ const ScrollToTop = () => {
     });
   };
 
+  const radius = 22;
+  const circumference = 2 * Math.PI * radius;
+  const strokeDashoffset = circumference - (scrollProgress / 100) * circumference;
+
   return (
     <AnimatePresence>
       {isVisible && (
         <motion.button
-          className="scroll-to-top"
+          className="scroll-to-top-btn"
           onClick={scrollToTop}
-          initial={{ opacity: 0, scale: 0.5, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.5, y: 20 }}
-          whileHover={{ y: -5, scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.5, y: 30 }}
+          animate={{ opacity: 1, scale: 1, y: [0, -6, 0] }}
+          exit={{ opacity: 0, scale: 0.5, y: 30 }}
+          transition={{
+            y: { duration: 2.8, repeat: Infinity, ease: 'easeInOut' },
+            opacity: { duration: 0.3 },
+            scale: { duration: 0.3 },
+          }}
+          whileHover={{ scale: 1.15 }}
+          whileTap={{ scale: 0.88 }}
           aria-label="Scroll to top"
         >
-          <ChevronUp size={28} />
-          <div className="scroll-progress-ring"></div>
+          <svg className="scroll-progress-circle" width="52" height="52" viewBox="0 0 52 52">
+            <circle
+              className="scroll-circle-bg"
+              cx="26"
+              cy="26"
+              r={radius}
+              fill="none"
+              strokeWidth="2.5"
+            />
+            <circle
+              className="scroll-circle-fill"
+              cx="26"
+              cy="26"
+              r={radius}
+              fill="none"
+              strokeWidth="2.8"
+              strokeDasharray={circumference}
+              strokeDashoffset={strokeDashoffset}
+              strokeLinecap="round"
+            />
+          </svg>
+          <div className="scroll-icon-wrap">
+            <ChevronUp size={22} />
+          </div>
         </motion.button>
       )}
     </AnimatePresence>
