@@ -38,9 +38,21 @@
 .nav-logo-img {
   width: 36px;
   height: 36px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px rgba(134, 59, 255, 0.55));
+  transition: filter 0.3s ease, transform 0.3s ease;
+  animation: logo-pulse 3s ease-in-out infinite;
+}
+
+.navbar-logo:hover .nav-logo-img {
+  filter: drop-shadow(0 0 14px rgba(134, 59, 255, 0.9));
+  transform: scale(1.12) rotate(-5deg);
+}
+
+@keyframes logo-pulse {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(134, 59, 255, 0.55)); }
+  50%       { filter: drop-shadow(0 0 12px rgba(134, 59, 255, 0.85)); }
 }
 
 .logo-text {
