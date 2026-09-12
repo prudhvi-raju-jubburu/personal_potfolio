@@ -67,7 +67,7 @@ const Navbar = () => {
     <header className={`navbar ${scrolled || open ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <NavLink to="/" className="navbar-logo" onClick={close}>
-          <img src="/favicon.svg" alt="Logo" className="nav-logo-img" width="36" height="36" />
+          <img src={profile.photo} alt={profile.name} className="nav-logo-img" width="36" height="36" />
           <span className="logo-text">
             J. Prudhvi <span className="text-gradient">Raju</span>
           </span>
