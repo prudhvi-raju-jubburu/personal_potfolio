@@ -1,16 +1,31 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import {
+  Menu,
+  X,
+  Home as HomeIcon,
+  User,
+  Code2,
+  Layers,
+  Briefcase,
+  Mail,
+  FileText,
+  Download,
+  ChevronRight,
+  Github,
+  Linkedin,
+} from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { profile } from '../data/site';
+import { profile, socials } from '../data/site';
 import { useScrollSpy } from '../hooks/useScrollSpy';
 import './Navbar.css';
 
-const sectionLinks = [
-  { label: 'About', hash: '#about' },
-  { label: 'Skills', hash: '#skills' },
-  { label: 'Projects', hash: '#projects' },
-  { label: 'Experience', hash: '#experience' },
-  { label: 'Contact', hash: '#contact' },
+const navItems = [
+  { label: 'Home', hash: '#home', icon: HomeIcon },
+  { label: 'About', hash: '#about', icon: User },
+  { label: 'Skills', hash: '#skills', icon: Code2 },
+  { label: 'Projects', hash: '#projects', icon: Layers },
+  { label: 'Experience', hash: '#experience', icon: Briefcase },
+  { label: 'Contact', hash: '#contact', icon: Mail },
 ];
 
 const Navbar = () => {
@@ -63,50 +78,109 @@ const Navbar = () => {
     }
   };
 
+  const getSocialIcon = (id) => {
+    if (id === 'github') return <Github size={18} />;
+    if (id === 'linkedin') return <Linkedin size={18} />;
+    if (id === 'email') return <Mail size={18} />;
+    return null;
+  };
+
   return (
-    <header className={`navbar ${scrolled || open ? 'scrolled' : ''}`}>
-      <div className="navbar-container">
-        <NavLink to="/" className="navbar-logo" onClick={close}>
-          <img src={profile.photo} alt={profile.name} className="nav-logo-img" width="36" height="36" />
-          <span className="logo-text">
-            J. Prudhvi <span className="text-gradient">Raju</span>
-          </span>
-        </NavLink>
-
-        <nav className={`nav-menu ${open ? 'active' : ''}`} aria-label="Primary">
-          <a href={hrefFor('#home')} className={`nav-link-btn ${isHome && activeSection === 'home' ? 'active' : ''}`} onClick={(e) => handleNavClick(e, '#home')}>
-            Home
-          </a>
-          {sectionLinks.map((item) => (
-            <a
-              key={item.hash}
-              href={hrefFor(item.hash)}
-              className={`nav-link-btn ${isActiveHash(item.hash) ? 'active' : ''}`}
-              onClick={(e) => handleNavClick(e, item.hash)}
-            >
-              {item.label}
-            </a>
-          ))}
-          <NavLink to="/resume" className={({ isActive }) => `nav-link-btn ${isActive ? 'active' : ''}`} onClick={close}>
-            Resume
+    <>
+      <header className={`navbar ${scrolled ? 'scrolled' : ''} ${open ? 'menu-open' : ''}`}>
+        <div className="navbar-container">
+          <NavLink to="/" className="navbar-logo" onClick={close}>
+            <img src={profile.photo} alt={profile.name} className="nav-logo-img" width="36" height="36" />
+            <span className="logo-text">
+              J. Prudhvi <span className="text-gradient">Raju</span>
+            </span>
           </NavLink>
-          <a href={profile.resume} className="btn btn-primary nav-resume" download={profile.resumeFileName} onClick={close}>
-            Download CV
-          </a>
-        </nav>
 
-        <button
-          className="mobile-menu-btn"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          aria-label={open ? 'Close menu' : 'Open menu'}
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
-      </div>
-    </header>
+          <nav className={`nav-menu ${open ? 'active' : ''}`} aria-label="Primary" id="mobile-nav">
+            <div className="nav-links-list">
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = item.hash === '#home' ? isHome && activeSection === 'home' : isActiveHash(item.hash);
+                return (
+                  <a
+                    key={item.hash}
+                    href={hrefFor(item.hash)}
+                    className={`nav-link-btn ${isActive ? 'active' : ''}`}
+                    onClick={(e) => handleNavClick(e, item.hash)}
+                  >
+                    <span className="nav-link-content">
+                      <span className="nav-link-icon"><Icon size={18} /></span>
+                      <span className="nav-link-label">{item.label}</span>
+                    </span>
+                    <ChevronRight size={16} className="nav-link-arrow" />
+                  </a>
+                );
+              })}
+
+              <NavLink
+                to="/resume"
+                className={({ isActive }) => `nav-link-btn ${isActive ? 'active' : ''}`}
+                onClick={close}
+              >
+                <span className="nav-link-content">
+                  <span className="nav-link-icon"><FileText size={18} /></span>
+                  <span className="nav-link-label">Resume</span>
+                </span>
+                <ChevronRight size={16} className="nav-link-arrow" />
+              </NavLink>
+            </div>
+
+            <div className="nav-actions">
+              <a
+                href={profile.resume}
+                className="btn btn-primary nav-resume"
+                download={profile.resumeFileName}
+                onClick={close}
+              >
+                <Download size={16} className="btn-icon" />
+                <span>Download CV</span>
+              </a>
+
+              <div className="nav-mobile-socials">
+                <span className="nav-socials-heading">Connect</span>
+                <div className="nav-socials-row">
+                  {socials.filter((s) => ['github', 'linkedin', 'email'].includes(s.id)).map((s) => (
+                    <a
+                      key={s.id}
+                      href={s.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="nav-social-icon-btn"
+                      aria-label={s.label}
+                    >
+                      {getSocialIcon(s.id)}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </nav>
+
+          <button
+            type="button"
+            className={`mobile-menu-btn ${open ? 'is-open' : ''}`}
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
+      </header>
+      <div
+        className={`nav-backdrop ${open ? 'active' : ''}`}
+        onClick={close}
+        aria-hidden="true"
+      />
+    </>
   );
 };
 
 export default Navbar;
+
